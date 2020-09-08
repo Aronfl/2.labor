@@ -33,8 +33,11 @@ page 50125 "Webshop Order Line Subpage"
                 }
                 field("Unique ID"; "Unique ID")
                 {
-
-
+                    trigger OnAssistEdit()
+                    begin
+                        if AssistEdit(xRec) then
+                            CurrPage.Update;
+                    end;
                 }
             }
         }

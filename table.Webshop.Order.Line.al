@@ -51,13 +51,21 @@ table 50101 "Webshop Order Line"
             DataClassification = CustomerContent;
             trigger OnValidate()
             begin
-
+                if "Unique ID" <> xRec."Unique ID" then begin
+                    SalesSetup.Get();
+                    NoSeriesMgt.TestManual(SalesSetup."Customer Nos.");
+                    "No. Series" := '';
+                end;
             end;
-            // TODO add unique id
-            // Use No. series design pattern here
+        }
 
+        field(6; "No. Series"; Code[20])
+        {
+            Editable = false;
+            TableRelation = "No. Series";
         }
     }
+
 
     keys
     {
@@ -80,4 +88,46 @@ table 50101 "Webshop Order Line"
         // UnitPrice := item.Get('123');
 
     end;
+
+    trigger OnInsert()
+    begin
+        if "Unique ID" = '' then begin
+            SalesSetup.Get();
+            SalesSetup.TestField("Customer Nos.");
+            NoSeriesMgt.InitSeries(
+                SalesSetup."Customer Nos.",
+                xRec."No. Series",
+                0D, "Unique ID",
+                "No. Series"
+            );
+        end;
+    end;
+    /// <summary> 
+    /// Description for AssistEdit.
+    /// </summary>
+    /// <param name="OldLine">Parameter of type Record "Webshop Order Line".</param>
+    /// <returns>Return variable "Boolean".</returns>
+    procedure AssistEdit(OldLine: Record "Webshop Order Line"): Boolean
+    var
+        Line: Record "Webshop Order Line";
+    begin
+        with Line do begin
+            Line := Rec;
+            SalesSetup.Get();
+            SalesSetup.TestField("Customer Nos.");
+            if NoSeriesMgt.SelectSeries(
+                SalesSetup."Customer Nos.",
+                OldLine."No. Series",
+                "No. Series"
+            ) then begin
+                NoSeriesMgt.SetSeries("Unique ID");
+                Rec := Line;
+                exit(true);
+            end;
+        end;
+    end;
+
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
 }

@@ -35,7 +35,6 @@ table 50101 "Webshop Order Line"
             Caption = 'Unit Price';
             FieldClass = FlowField;
             CalcFormula = lookup (Item."Unit List Price" where("No." = field("Item No.")));
-
         }
 
         field(4; "Unit code"; Code[10]) // mértékegység kód
@@ -49,8 +48,6 @@ table 50101 "Webshop Order Line"
         {
             Caption = 'Price';
             DataClassification = CustomerContent;
-            // Price := Quantity * Item.unitPrice <== how to get this out of db?
-
         }
 
         field(6; "Unique ID"; Code[20]) // Egyedi azonosító - 3. kérdés: Mi lesz a kulcs, és miért?

@@ -67,7 +67,7 @@ table 50101 "Webshop Order Line"
             end;
         }
 
-        field(6; "No. Series"; Code[20])
+        field(7; "No. Series"; Code[20])
         {
             Editable = false;
             TableRelation = "No. Series";

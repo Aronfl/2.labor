@@ -22,6 +22,8 @@ table 50100 "Webshop Order Header"
             Caption = 'Customer ID from BC';
             FieldClass = FlowField;
             CalcFormula = lookup (Customer."No." where("No." = field("BC Customer ID")));
+            // sztem így helyes:
+            // CalcFormula = lookup (Customer."No." where("Webshop User ID" = field("Webshop ID")));
 
         }
         field(4; "Order No."; Code[20]) // BC rendelés szám

@@ -15,26 +15,33 @@ page 50124 "Webshop Order Document"
                 {
 
                 }
+
+                // A fejen a webshop felhasználói azonosító ne jelenjen meg, viszont a Vevő neve igen.
                 field("Webshop User ID"; WebshopUserId)
                 {
                     DrillDownPageId = "Customer List";
                 }
+
                 field("BC Customer ID"; "BC Customer ID")
                 {
 
                 }
+
                 field("Order No."; "Order No.")
                 {
 
                 }
+
                 field("Order Date"; "Order Date")
                 {
 
                 }
+
                 field("Order Status"; "Order Status")
                 {
 
                 }
+
             }
             part(lines; "Webshop Order Line Subpage")
             {

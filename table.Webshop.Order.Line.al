@@ -2,7 +2,7 @@ table 50101 "Webshop Order Line"
 {
     Caption = 'Webshop Order Line';
     DataClassification = CustomerContent;
-    LookupPageId = "Customer List";
+    LookupPageId = "Item List";
     DrillDownPageId = "Item List";
 
     fields

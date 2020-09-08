@@ -41,8 +41,8 @@ table 50101 "Webshop Order Line"
         field(4; "Unit code"; Code[10]) // mértékegység kód
         {
             Caption = 'Unit code';
-            DataClassification = CustomerContent;
-
+            FieldClass = FlowField;
+            CalcFormula = lookup (Item."Unit of Measure Filter" where("No." = field("Item No.")));
         }
 
         field(5; "Price"; Integer) //ár,de nem írjuk ide - 2. kérdés: Miért nem? válasz: Calculated field lesz
@@ -87,11 +87,8 @@ table 50101 "Webshop Order Line"
     /// Description for CalcPrice.
     /// </summary>
     local procedure CalcPrice()
-    var
-
     begin
-        // UnitPrice := item.Get('123');
-
+        Price := Quantity * UnitPrice;
     end;
 
     trigger OnInsert()

@@ -2,7 +2,7 @@ tableextension 50120 CustomerWebshopExtension extends Customer
 {
     fields
     {
-        field(1001; WebshopUserId; Integer)
+        field(1001; CustomercardWebshopUserId; Integer)
         {
             Caption = 'Webshop User ID ext';
             DataClassification = CustomerContent;
@@ -11,9 +11,9 @@ tableextension 50120 CustomerWebshopExtension extends Customer
             /// </summary>
             trigger OnValidate()
             begin
-                if WebshopUserId < 0 then begin
+                if CustomercardWebshopUserId < 0 then begin
                     Message('Webshop ID cannot be negative number');
-                    WebshopUserId := 0;
+                    CustomercardWebshopUserId := 0;
                 end;
             end;
         }

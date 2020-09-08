@@ -5,7 +5,7 @@ pageextension 50120 CustomerWebshopExtensionCard extends "Customer Card"
 
         addafter(Blocked)
         {
-            field("Webshop  ID"; "Webshop ID")
+            field("Webshop User Id"; WebshopUserId)
             {
                 Caption = 'Webshop ID';
                 ApplicationArea = All;

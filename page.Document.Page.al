@@ -15,7 +15,7 @@ page 50124 "Webshop Order Document"
                 {
 
                 }
-                field("Webshop User ID"; "Webshop User ID")
+                field("Webshop User ID"; WebshopUserId)
                 {
 
                 }

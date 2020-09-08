@@ -11,7 +11,7 @@ table 50100 "Webshop Order Header"
         {
             Caption = 'Webshop Order ID';
         }
-        field(2; "Webshop User ID"; Integer)
+        field(2; WebshopUserId; Integer)
         {
             Caption = 'Webshop User ID';
             TableRelation = Customer."No.";
@@ -21,10 +21,9 @@ table 50100 "Webshop Order Header"
         {
             Caption = 'Customer ID from BC';
             FieldClass = FlowField;
-            CalcFormula = lookup (Customer."No." where("No." = field("BC Customer ID")));
+            //CalcFormula = lookup (Customer."No." where("No." = field("BC Customer ID")));
             // sztem így helyes:
-            // CalcFormula = lookup (Customer."No." where("Webshop User ID" = field("Webshop ID")));
-
+            CalcFormula = lookup (Customer."No." where(WebshopUserId = field(WebshopUserId)));
         }
         field(4; "Order No."; Code[20]) // BC rendelés szám
         {

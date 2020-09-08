@@ -14,7 +14,7 @@ table 50100 "Webshop Order Header"
         field(2; WebshopUserId; Integer)
         {
             Caption = 'Webshop User ID';
-            TableRelation = Customer."No.";
+            TableRelation = Customer;
         }
 
         field(3; "BC Customer ID"; Code[20]) // BC vevő azonosító

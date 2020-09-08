@@ -30,14 +30,22 @@ table 50101 "Webshop Order Line"
             end;
         }
 
-        field(3; "Unit code"; Code[10]) // mértékegység kód
+        field(3; UnitPrice; Decimal)
+        {
+            Caption = 'Unit Price';
+            FieldClass = FlowField;
+            CalcFormula = lookup (Item."Unit List Price" where("No." = field("Item No.")));
+
+        }
+
+        field(4; "Unit code"; Code[10]) // mértékegység kód
         {
             Caption = 'Unit code';
             DataClassification = CustomerContent;
 
         }
 
-        field(4; "Price"; Integer) //ár,de nem írjuk ide - 2. kérdés: Miért nem? válasz: Calculated field lesz
+        field(5; "Price"; Integer) //ár,de nem írjuk ide - 2. kérdés: Miért nem? válasz: Calculated field lesz
         {
             Caption = 'Price';
             DataClassification = CustomerContent;
@@ -45,19 +53,27 @@ table 50101 "Webshop Order Line"
 
         }
 
-        field(5; "Unique ID"; Code[20]) // Egyedi azonosító - 3. kérdés: Mi lesz a kulcs, és miért?
+        field(6; "Unique ID"; Code[20]) // Egyedi azonosító - 3. kérdés: Mi lesz a kulcs, és miért?
         {
             Caption = 'Unique ID';
             DataClassification = CustomerContent;
             trigger OnValidate()
             begin
-
+                if "Unique ID" <> xRec."Unique ID" then begin
+                    SalesSetup.Get();
+                    NoSeriesMgt.TestManual(SalesSetup."Customer Nos.");
+                    "No. Series" := '';
+                end;
             end;
-            // TODO add unique id
-            // Use No. series design pattern here
+        }
 
+        field(6; "No. Series"; Code[20])
+        {
+            Editable = false;
+            TableRelation = "No. Series";
         }
     }
+
 
     keys
     {
@@ -72,12 +88,51 @@ table 50101 "Webshop Order Line"
     /// </summary>
     local procedure CalcPrice()
     var
-        unitPrice: Decimal;
-        id: Code[20];
-        item: Record Item;
+
     begin
-        id := "Item No.";
         // UnitPrice := item.Get('123');
 
     end;
+
+    trigger OnInsert()
+    begin
+        if "Unique ID" = '' then begin
+            SalesSetup.Get();
+            SalesSetup.TestField("Customer Nos.");
+            NoSeriesMgt.InitSeries(
+                SalesSetup."Customer Nos.",
+                xRec."No. Series",
+                0D, "Unique ID",
+                "No. Series"
+            );
+        end;
+    end;
+    /// <summary> 
+    /// Description for AssistEdit.
+    /// </summary>
+    /// <param name="OldLine">Parameter of type Record "Webshop Order Line".</param>
+    /// <returns>Return variable "Boolean".</returns>
+    procedure AssistEdit(OldLine: Record "Webshop Order Line"): Boolean
+    var
+        Line: Record "Webshop Order Line";
+    begin
+        with Line do begin
+            Line := Rec;
+            SalesSetup.Get();
+            SalesSetup.TestField("Customer Nos.");
+            if NoSeriesMgt.SelectSeries(
+                SalesSetup."Customer Nos.",
+                OldLine."No. Series",
+                "No. Series"
+            ) then begin
+                NoSeriesMgt.SetSeries("Unique ID");
+                Rec := Line;
+                exit(true);
+            end;
+        end;
+    end;
+
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
 }

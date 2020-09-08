@@ -3,7 +3,7 @@ page 50124 "Webshop Order Document"
     Caption = 'Webshop Order Document';
     PageType = Document;
     UsageCategory = Documents;
-    SourceTable = "Webshop Order Header";
+    SourceTable = "Webshop Order Header table";
 
     layout
     {

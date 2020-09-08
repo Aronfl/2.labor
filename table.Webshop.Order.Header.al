@@ -1,4 +1,4 @@
-table 50100 "Webshop Order Header"
+table 50100 "Webshop Order Header table"
 {
     Caption = 'Webshop Order Header';
     LookupPageId = "Customer List";

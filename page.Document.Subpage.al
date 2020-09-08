@@ -21,7 +21,7 @@ page 50125 "Webshop Order Line Subpage"
 
 
                 }
-                field("Unit code"; "Unit code")
+                field("Unit code"; "Base unit of measure")
                 {
 
 

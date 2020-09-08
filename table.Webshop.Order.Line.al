@@ -37,11 +37,11 @@ table 50101 "Webshop Order Line"
             CalcFormula = lookup (Item."Unit List Price" where("No." = field("Item No.")));
         }
 
-        field(4; "Unit code"; Code[10]) // mértékegység kód
+        field(4; "Base unit of measure"; Code[10]) // mértékegység kód
         {
             Caption = 'Unit code';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item."Unit of Measure Filter" where("No." = field("Item No.")));
+            CalcFormula = lookup (Item."Base Unit of Measure" where("No." = field("Item No.")));
         }
 
         field(5; "Price"; Integer) //ár,de nem írjuk ide - 2. kérdés: Miért nem? válasz: Calculated field lesz

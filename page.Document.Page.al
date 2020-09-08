@@ -1,0 +1,64 @@
+page 50124 "Webshop Order Document"
+{
+    Caption = 'Webshop Order Document';
+    PageType = Document;
+    UsageCategory = Documents;
+    SourceTable = "Webshop Order Header";
+
+    layout
+    {
+        area(Content)
+        {
+            group(General)
+            {
+                field("Webshop Order ID"; "Webshop Order ID")
+                {
+
+                }
+                field("Webshop User ID"; "Webshop User ID")
+                {
+
+                }
+                field("BC Customer ID"; "BC Customer ID")
+                {
+
+                }
+                field("Order No."; "Order No.")
+                {
+
+                }
+                field("Order Date"; "Order Date")
+                {
+
+                }
+                field("Order Status"; "Order Status")
+                {
+
+                }
+            }
+            part(lines; "Webshop Order Line Subpage")
+            {
+
+            }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(ActionName)
+            {
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+
+                end;
+            }
+        }
+    }
+
+    var
+        myInt: Integer;
+}

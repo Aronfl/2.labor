@@ -104,6 +104,11 @@ table 50101 "Webshop Order Line"
             );
         end;
     end;
+
+    trigger OnModify()
+    begin
+        CalcPrice();
+    end;
     /// <summary> 
     /// Description for AssistEdit.
     /// </summary>

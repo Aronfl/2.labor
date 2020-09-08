@@ -1,2 +1,5 @@
-*.app
+**/*.app
 .alpackages
+*.app
+
+Default publisher_2.labor_1.0.0.0.app

@@ -21,11 +21,11 @@
       "appId": "437dbf0e-84ff-417a-965d-ed2bb9650972",
       "publisher": "Microsoft",
       "name": "Base Application",
-      "version": "15.0.0.0"
+      "version": "16.0.0.0"
     }
   ],
   "screenshots": [],
-  "platform": "15.0.0.0",
+  "platform": "16.0.0.0",
   "idRanges": [
     {
       "from": 50100,

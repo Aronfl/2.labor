@@ -31,13 +31,9 @@ page 50125 "Webshop Order Line Subpage"
 
 
                 }
-                field("Unique ID"; "Unique ID")
+                field("Line No."; "Line No.")
                 {
-                    trigger OnAssistEdit()
-                    begin
-                        if AssistEdit(xRec) then
-                            CurrPage.Update;
-                    end;
+
                 }
             }
         }

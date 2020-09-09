@@ -12,7 +12,7 @@ table 50101 "Webshop Order Line"
             Editable = true;
             Caption = 'Item No.';
             DataClassification = CustomerContent;
-            TableRelation = Item."No.";
+            TableRelation = "Item";
             trigger OnValidate();
             begin
                 CalcPrice();

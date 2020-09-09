@@ -5,6 +5,7 @@ page 50126 "Webshop Order List"
     PageType = List;
     SourceTable = "Webshop Order Header table";
     UsageCategory = Lists;
+    Editable = true;
 
     layout
     {
@@ -82,6 +83,7 @@ page 50126 "Webshop Order List"
                 Message('processing order with id: ' + Format(Rec."Webshop Order ID"));
 
                 SalesHeader.Init();
+                SalesHeader."No." := Rec."Order No.";
                 WebshopOrderLine.SetRange("Order No.", Rec."Order No.");
                 WebshopOrderLine.FindFirst();
                 //TODO: fill it up with data
@@ -89,7 +91,7 @@ page 50126 "Webshop Order List"
                     SalesLine."Document No." := SalesHeader."No.";
                     SalesLine."Document Type" := SalesHeader."Document Type";
                     SalesLine."Document Type" := SalesHeader."Document Type";
-                    SalesLine."Document No." := SalesHeader."No.";
+                    SalesLine."No." := WebshopOrderLine."Order No." + Format(WebshopOrderLine."Line No.");
                     SalesLine.Type := SalesLine.Type::Item;
                     //TODO: No. increment by 10000
                     // SalesLine.Quantity := Quantity;

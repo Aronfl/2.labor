@@ -5,6 +5,7 @@ table 50101 "Webshop Order Line"
     LookupPageId = "Item List";
     DrillDownPageId = "Item List";
 
+
     fields
     {
         field(1; "Item No."; Code[20]) //cikkszám (legördülő)
@@ -45,6 +46,7 @@ table 50101 "Webshop Order Line"
         {
             Caption = 'Line No.';
             DataClassification = CustomerContent;
+            AutoIncrement = true;
         }
 
 

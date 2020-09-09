@@ -3,8 +3,10 @@ page 50125 "Webshop Order Line Subpage"
     Caption = 'Lines';
     PageType = ListPart;
     SourceTable = "Webshop Order Line";
-    AutoSplitKey = true;
+    AutoSplitKey = false;
     DelayedInsert = true;
+    Editable = true;
+
 
     layout
     {
@@ -35,11 +37,17 @@ page 50125 "Webshop Order Line Subpage"
                 {
 
                 }
+
+                field("Order No."; "Order No.")
+                {
+
+                }
             }
         }
     }
 
+    local procedure SetOrderNo()
+    begin
 
-    var
-        myInt: Integer;
+    end;
 }

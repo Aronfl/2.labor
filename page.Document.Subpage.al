@@ -16,7 +16,7 @@ page 50125 "Webshop Order Line Subpage"
                 {
                     TableRelation = Item;
                 }
-                field(Quantity; Quantity)
+                field("Quantity"; "Quantity")
                 {
 
 

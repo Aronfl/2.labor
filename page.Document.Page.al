@@ -17,7 +17,7 @@ page 50124 "Webshop Order Document"
                 }
                 field("Webshop User ID"; WebshopUserId)
                 {
-                    DrillDownPageId = "Customer List";
+                    LookupPageId = "Customer List";
                 }
                 field("BC Customer ID"; "BC Customer ID")
                 {

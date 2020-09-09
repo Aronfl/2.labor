@@ -66,8 +66,16 @@ table 50101 "Webshop Order Line"
 
         field(7; "No. Series"; Code[20])
         {
+            Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
+        }
+
+        field(8; "Order No."; Code[20])
+        {
+            Caption = 'Order No.';
+            Editable = false;
+            TableRelation = "Webshop Order Header table"."Order No.";
         }
     }
 
@@ -76,7 +84,7 @@ table 50101 "Webshop Order Line"
     {
         key(PK; "Unique ID")
         {
-            Clustered = true;
+
         }
     }
 

@@ -8,7 +8,7 @@
             "server": "http://127.0.0.1",
             "serverInstance": "BC160",
             "authentication": "Windows",
-            "startupObjectId": 50124,
+            "startupObjectId": 50126,
             "startupObjectType": "Page",
             "breakOnError": true,
             "launchBrowser": true,

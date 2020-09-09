@@ -10,6 +10,7 @@ table 50100 "Webshop Order Header table"
         field(1; "Webshop Order ID"; Integer)
         {
             Caption = 'Webshop Order ID';
+            AutoIncrement = true;
         }
         field(2; WebshopUserId; Integer)
         {

@@ -49,6 +49,11 @@ page 50125 "Webshop Order Line Subpage"
                 {
 
                 }
+
+                field("Unit Price"; "Unit Price")
+                {
+
+                }
             }
         }
     }

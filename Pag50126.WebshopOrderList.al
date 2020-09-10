@@ -98,17 +98,19 @@ page 50126 "Webshop Order List"
                 SalesHeader.Init();
                 SalesHeader."No." := Rec."Order No.";
                 SalesHeader."Bill-to Customer No." := WebshopOrderDocument."BC Customer ID";
+                SalesHeader."Sell-to Customer No." := WebshopOrderDocument."BC Customer ID";
                 SalesHeader."Document Date" := Today();
+                SalesHeader."Document Type" := "Sales Document Type"::Order;
                 WebshopOrderLine.SetRange("Order No.", Rec."Order No.");
                 WebshopOrderLine.FindFirst();
                 //TODO: fill it up with data
                 repeat
                     SalesLine."Document No." := SalesHeader."No.";
                     SalesLine."Document Type" := SalesHeader."Document Type";
-                    SalesLine."Document Type" := SalesHeader."Document Type";
                     SalesLine."No." := WebshopOrderLine."Item No.";
                     SalesLine.Type := SalesLine.Type::Item;
                     SalesLine."Line No." := WebshopOrderLine."Line No.";
+
                     //TODO: No. increment by 10000
                     SalesLine.Quantity := WebshopOrderLine.Quantity;
                     SalesLine."Quantity (Base)" := WebshopOrderLine.Quantity;

@@ -22,11 +22,12 @@ table 50101 "Webshop Order Line"
             DataClassification = CustomerContent;
         }
 
-        field(3; UnitPrice; Decimal)
+        field(3; "Unit Price"; Decimal)
         {
             Caption = 'Unit Price';
+            Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup (Item."Unit List Price" where("No." = field("Item No.")));
+            CalcFormula = lookup ("Item"."Unit Price" where("No." = field("Item No.")));
         }
 
         field(4; "Base unit of measure"; Code[10]) // mértékegység kód
@@ -39,7 +40,7 @@ table 50101 "Webshop Order Line"
         field(5; "Price"; Integer) //ár,de nem írjuk ide - 2. kérdés: Miért nem? válasz: Calculated field lesz
         {
             Caption = 'Price';
-            DataClassification = CustomerContent;
+            Editable = false;
         }
 
         field(6; "Line No."; BigInteger) // Egyedi azonosító - 3. kérdés: Mi lesz a kulcs, és miért?
@@ -72,18 +73,18 @@ table 50101 "Webshop Order Line"
     /// </summary>
     local procedure CalcPrice()
     begin
-        Price := Quantity * UnitPrice;
+        Price := Quantity * "Unit Price";
     end;
 
     trigger OnModify()
     begin
         CalcPrice();
     end;
-    /// <summary> 
-    /// Description for AssistEdit.
-    /// </summary>
-    /// <param name="OldLine">Parameter of type Record "Webshop Order Line".</param>
-    /// <returns>Return variable "Boolean".</returns>
+
+    trigger OnInsert()
+    begin
+        CalcPrice();
+    end;
 
     var
         SalesSetup: Record "Sales & Receivables Setup";

@@ -37,6 +37,13 @@ table 50100 "Webshop Order Header table"
             Caption = 'Order Status';
         }
 
+        field(7; UserName; Text[100])
+        {
+            Caption = 'User Name';
+            FieldClass = FlowField;
+            CalcFormula = lookup (Customer.Name where(CustomercardWebshopUserId = field(WebshopUserId)));
+        }
+
     }
 
     keys

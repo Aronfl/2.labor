@@ -30,12 +30,9 @@ page 50126 "Webshop Order List"
                     end;
                 }
 
-                field("Order No."; "Order No.")
+                field("BC Order No."; "BC Order ID")
                 {
                     ApplicationArea = All;
-
-                    //LookupPageId = "Webshop Order Document";
-                    // TableRelation = "Webshop Order Header table"."Order No." WHERE("Order No." = field("Order No."));
                 }
 
                 field(WebshopUserId; WebshopUserId)
@@ -89,6 +86,8 @@ page 50126 "Webshop Order List"
         SalesHeader: Record "Sales Header";
         WebshopOrderDocument: Record "Webshop Order Header table";
         WebshopOrderLine: Record "Webshop Order Line";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+        NewNoSeries: Code[20];
     begin
         CurrPage.SetSelectionFilter(Rec);
         If (Rec.FindSet()) then begin
@@ -96,13 +95,21 @@ page 50126 "Webshop Order List"
                 Message('processing order with id: ' + Format(Rec."Webshop Order ID"));
 
                 SalesHeader.Init();
-                SalesHeader."No." := Rec."Order No.";
                 SalesHeader."Bill-to Customer No." := WebshopOrderDocument."BC Customer ID";
                 SalesHeader."Sell-to Customer No." := WebshopOrderDocument."BC Customer ID";
                 SalesHeader."Document Date" := Today();
                 SalesHeader."Document Type" := "Sales Document Type"::Order;
-                WebshopOrderLine.SetRange("Order No.", Rec."Order No.");
+                WebshopOrderLine.SetRange("Webshop Order ID", Rec."Webshop Order ID");
                 WebshopOrderLine.FindFirst();
+                NoSeriesMgt.InitSeries(
+                    "SalesHeader".GetNoSeriesCode,
+                    SalesHeader."No. Series",
+                    SalesHeader."Posting Date",
+                    SalesHeader."No.",
+                    NewNoSeries
+                );
+                SalesHeader."No." := NoSeriesMgt.GetNextNo(NewNoSeries, Today(), true);
+                SalesHeader.Insert();
                 //TODO: fill it up with data
                 repeat
                     SalesLine."Document No." := SalesHeader."No.";
@@ -123,8 +130,8 @@ page 50126 "Webshop Order List"
                     SalesLine."VAT Bus. Posting Group" := 'EU';
                     SalesLine.INSERT;
                 until WebshopOrderLine.Next() = 0;
-                SalesHeader.Insert();
                 Rec."Order Status" := OrderStatusEnum::processed;
+                Rec."BC Order ID" := SalesHeader."No.";
                 Rec.Modify();
 
             until Rec.Next() = 0;

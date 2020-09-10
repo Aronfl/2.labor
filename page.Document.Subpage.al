@@ -29,18 +29,15 @@ page 50125 "Webshop Order Line Subpage"
                 field("Quantity"; "Quantity")
                 {
 
-
                 }
 
                 field("Unit code"; "Base unit of measure")
                 {
 
-
                 }
 
                 field(Price; Price)
                 {
-
 
                 }
 
@@ -49,7 +46,7 @@ page 50125 "Webshop Order Line Subpage"
 
                 }
 
-                field("Order No."; "Order No.")
+                field("Webshop Order ID"; "Webshop Order ID")
                 {
 
                 }
@@ -58,12 +55,9 @@ page 50125 "Webshop Order Line Subpage"
                 {
 
                 }
+
             }
+
         }
     }
-
-    local procedure SetOrderNo()
-    begin
-
-    end;
 }

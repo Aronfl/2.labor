@@ -24,9 +24,10 @@ table 50100 "Webshop Order Header table"
             CalcFormula = lookup (Customer."No." where(CustomercardWebshopUserId = field(WebshopUserId)));
             // TableRelation = Customer;
         }
-        field(4; "Order No."; Code[20]) // BC rendelés szám
+        field(4; "BC Order ID"; Code[20]) // BC rendelés szám
         {
             Caption = 'Order No.';
+            TableRelation = "Sales Header";
         }
         field(5; "Order Date"; Date)
         {

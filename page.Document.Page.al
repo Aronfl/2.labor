@@ -28,9 +28,9 @@ page 50124 "Webshop Order Document"
 
                 }
 
-                field("Order No."; "Order No.")
+                field("BC Order ID"; "BC Order ID")
                 {
-
+                    LookupPageId = "Sales Order";
                 }
 
                 field("Order Date"; "Order Date")
@@ -46,7 +46,7 @@ page 50124 "Webshop Order Document"
             }
             part(lines; "Webshop Order Line Subpage")
             {
-                SubPageLink = "Order No." = field("Order No.");
+                SubPageLink = "Webshop Order ID" = field("Webshop Order ID");
                 // SubPageView = sorting("Order No.") where
             }
         }

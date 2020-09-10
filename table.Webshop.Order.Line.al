@@ -59,16 +59,14 @@ table 50101 "Webshop Order Line"
         {
             Caption = 'Line No.';
             DataClassification = CustomerContent;
-
-
         }
 
 
-        field(7; "Order No."; Code[20])
+        field(7; "Webshop Order ID"; Integer)
         {
             Caption = 'Order No.';
             Editable = false;
-            TableRelation = "Webshop Order Header table"."Order No.";
+            TableRelation = "Webshop Order Header table"."Webshop Order ID";
         }
 
         field(8; Description; Text[100])
@@ -82,7 +80,7 @@ table 50101 "Webshop Order Line"
 
     keys
     {
-        key(PK; "Order No.", "Line No.")
+        key(PK; "Webshop Order ID", "Line No.")
         {
 
         }

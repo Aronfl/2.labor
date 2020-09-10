@@ -13,7 +13,7 @@ page 50124 "Webshop Order Document"
             {
                 field("Webshop Order ID"; "Webshop Order ID")
                 {
-
+                    Editable = false;
                 }
 
                 // A fejen a webshop felhasználói azonosító ne jelenjen meg, viszont a Vevő neve igen.

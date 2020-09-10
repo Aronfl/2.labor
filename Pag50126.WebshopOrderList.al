@@ -97,6 +97,8 @@ page 50126 "Webshop Order List"
 
                 SalesHeader.Init();
                 SalesHeader."No." := Rec."Order No.";
+                SalesHeader."Bill-to Customer No." := WebshopOrderDocument."BC Customer ID";
+                SalesHeader."Document Date" := Today();
                 WebshopOrderLine.SetRange("Order No.", Rec."Order No.");
                 WebshopOrderLine.FindFirst();
                 //TODO: fill it up with data
@@ -120,6 +122,9 @@ page 50126 "Webshop Order List"
                     SalesLine.INSERT;
                 until WebshopOrderLine.Next() = 0;
                 SalesHeader.Insert();
+                Rec."Order Status" := OrderStatusEnum::processed;
+                Rec.Modify();
+
             until Rec.Next() = 0;
             Rec.ClearMarks();
         end;

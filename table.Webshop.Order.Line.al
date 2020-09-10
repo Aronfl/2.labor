@@ -14,12 +14,20 @@ table 50101 "Webshop Order Line"
             Caption = 'Item No.';
             DataClassification = CustomerContent;
             TableRelation = "Item";
+            trigger OnValidate()
+            begin
+                CalcPrice();
+            end;
         }
 
         field(2; "Quantity"; Decimal) // mennyiség
         {
             Caption = 'Quantity';
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                CalcPrice();
+            end;
         }
 
         field(3; "Unit Price"; Decimal)
@@ -28,6 +36,10 @@ table 50101 "Webshop Order Line"
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup ("Item"."Unit Price" where("No." = field("Item No.")));
+            trigger OnValidate()
+            begin
+                CalcPrice();
+            end;
         }
 
         field(4; "Base unit of measure"; Code[10]) // mértékegység kód
@@ -43,11 +55,12 @@ table 50101 "Webshop Order Line"
             Editable = false;
         }
 
-        field(6; "Line No."; BigInteger) // Egyedi azonosító - 3. kérdés: Mi lesz a kulcs, és miért?
+        field(6; "Line No."; Integer) // Egyedi azonosító - 3. kérdés: Mi lesz a kulcs, és miért?
         {
             Caption = 'Line No.';
             DataClassification = CustomerContent;
-            AutoIncrement = true;
+
+
         }
 
 
@@ -69,7 +82,7 @@ table 50101 "Webshop Order Line"
 
     keys
     {
-        key(PK; "Line No.", "Order No.")
+        key(PK; "Order No.", "Line No.")
         {
 
         }
@@ -81,16 +94,6 @@ table 50101 "Webshop Order Line"
     local procedure CalcPrice()
     begin
         Price := Quantity * "Unit Price";
-    end;
-
-    trigger OnModify()
-    begin
-        CalcPrice();
-    end;
-
-    trigger OnInsert()
-    begin
-        CalcPrice();
     end;
 
     var

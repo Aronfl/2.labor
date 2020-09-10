@@ -22,7 +22,8 @@ page 50124 "Webshop Order Document"
                 }
 
                 // A fejen a webshop felhasználói azonosító ne jelenjen meg, viszont a Vevő neve igen.
-                field("User Name"; UserName)
+                // TODO
+                field("BC Customer ID"; "BC Customer ID")
                 {
 
                 }

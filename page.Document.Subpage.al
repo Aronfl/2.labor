@@ -3,7 +3,7 @@ page 50125 "Webshop Order Line Subpage"
     Caption = 'Lines';
     PageType = ListPart;
     SourceTable = "Webshop Order Line";
-    AutoSplitKey = false;
+    AutoSplitKey = true;
     DelayedInsert = true;
     Editable = true;
 

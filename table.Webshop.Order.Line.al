@@ -56,6 +56,13 @@ table 50101 "Webshop Order Line"
             Editable = false;
             TableRelation = "Webshop Order Header table"."Order No.";
         }
+
+        field(8; Description; Text[100])
+        {
+            Caption = 'Description';
+            FieldClass = FlowField;
+            CalcFormula = lookup (Item.Description where("No." = field("Item No.")));
+        }
     }
 
 

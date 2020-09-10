@@ -18,21 +18,28 @@ page 50125 "Webshop Order Line Subpage"
                 {
                     TableRelation = Item;
                 }
+
+                // A soron pedig a cikkek Megnevezése is szerepeljen.
+                // TODO
+
                 field("Quantity"; "Quantity")
                 {
 
 
                 }
+
                 field("Unit code"; "Base unit of measure")
                 {
 
 
                 }
+
                 field(Price; Price)
                 {
 
 
                 }
+
                 field("Line No."; "Line No.")
                 {
 

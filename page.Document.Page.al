@@ -16,12 +16,13 @@ page 50124 "Webshop Order Document"
                     Editable = false;
                 }
 
-                // A fejen a webshop felhasználói azonosító ne jelenjen meg, viszont a Vevő neve igen.
                 field("Webshop User ID"; WebshopUserId)
                 {
                     LookupPageId = "Customer List";
                 }
 
+                // A fejen a webshop felhasználói azonosító ne jelenjen meg, viszont a Vevő neve igen.
+                // TODO
                 field("BC Customer ID"; "BC Customer ID")
                 {
 

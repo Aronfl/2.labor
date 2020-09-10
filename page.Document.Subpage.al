@@ -20,7 +20,11 @@ page 50125 "Webshop Order Line Subpage"
                 }
 
                 // A soron pedig a cikkek Megnevezése is szerepeljen.
-                // TODO
+
+                field("Item Name"; Description)
+                {
+
+                }
 
                 field("Quantity"; "Quantity")
                 {

@@ -1,8 +1,8 @@
 table 50100 "Webshop Order Header table"
 {
     Caption = 'Webshop Order Header';
-    LookupPageId = "Customer List";
-    DrillDownPageId = "Item List";
+    DrillDownPageId = "Webshop Order List";
+    LookupPageId = "Webshop Order List";
 
     fields
     {

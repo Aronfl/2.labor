@@ -46,6 +46,7 @@ page 50124 "Webshop Order Document"
             part(lines; "Webshop Order Line Subpage")
             {
                 SubPageLink = "Order No." = field("Order No.");
+                // SubPageView = sorting("Order No.") where
             }
         }
     }

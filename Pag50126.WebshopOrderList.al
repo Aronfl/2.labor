@@ -16,12 +16,26 @@ page 50126 "Webshop Order List"
                 field("Webshop Order ID"; "Webshop Order ID")
                 {
                     ApplicationArea = All;
-                    DrillDownPageId = "Webshop Order Document";
+                    trigger OnDrillDown()
+                    var
+                        WebshopDocumentTable: Record "Webshop Order Header table";
+                        WebshopDocumentPage: Page "Webshop Order Document";
+                    begin
+                        WebshopDocumentTable.Reset();
+                        WebshopDocumentTable.SetRange("Webshop Order ID", "Webshop Order ID");
+                        Clear(WebshopDocumentPage);
+                        WebshopDocumentPage.SetRecord(WebshopDocumentTable);
+                        WebshopDocumentPage.SetTableView(WebshopDocumentTable);
+                        WebshopDocumentPage.Run();
+                    end;
                 }
 
                 field("Order No."; "Order No.")
                 {
                     ApplicationArea = All;
+
+                    //LookupPageId = "Webshop Order Document";
+                    // TableRelation = "Webshop Order Header table"."Order No." WHERE("Order No." = field("Order No."));
                 }
 
                 field(WebshopUserId; WebshopUserId)
@@ -52,7 +66,7 @@ page 50126 "Webshop Order List"
     {
         area(Processing)
         {
-            action("Add new order")
+            action("Add sales order from selected webshop orders")
             {
                 Promoted = true;
                 PromotedCategory = Process;
@@ -76,7 +90,6 @@ page 50126 "Webshop Order List"
         WebshopOrderDocument: Record "Webshop Order Header table";
         WebshopOrderLine: Record "Webshop Order Line";
     begin
-        Message('please add your order!');
         CurrPage.SetSelectionFilter(Rec);
         If (Rec.FindSet()) then begin
             repeat
@@ -91,18 +104,19 @@ page 50126 "Webshop Order List"
                     SalesLine."Document No." := SalesHeader."No.";
                     SalesLine."Document Type" := SalesHeader."Document Type";
                     SalesLine."Document Type" := SalesHeader."Document Type";
-                    SalesLine."No." := WebshopOrderLine."Order No." + Format(WebshopOrderLine."Line No.");
+                    SalesLine."No." := WebshopOrderLine."Item No.";
                     SalesLine.Type := SalesLine.Type::Item;
+                    SalesLine."Line No." := WebshopOrderLine."Line No.";
                     //TODO: No. increment by 10000
-                    // SalesLine.Quantity := Quantity;
-                    // SalesLine."Quantity (Base)" := Quantity;
-                    // SalesLine."Qty. to Invoice" := Quantity;
-                    // SalesLine."Qty. to Invoice (Base)" := Quantity;
-                    // SalesLine."Qty. to Ship" := Quantity;
-                    // SalesLine."Qty. to Ship (Base)" := Quantity;
-                    // SalesLine."Gen. Prod. Posting Group" := 'RETAIL';
-                    // SalesLine."Gen. Bus. Posting Group" := 'EU';
-                    // SalesLine."VAT Bus. Posting Group" := 'EU';
+                    SalesLine.Quantity := WebshopOrderLine.Quantity;
+                    SalesLine."Quantity (Base)" := WebshopOrderLine.Quantity;
+                    SalesLine."Qty. to Invoice" := WebshopOrderLine.Quantity;
+                    SalesLine."Qty. to Invoice (Base)" := WebshopOrderLine.Quantity;
+                    SalesLine."Qty. to Ship" := WebshopOrderLine.Quantity;
+                    SalesLine."Qty. to Ship (Base)" := WebshopOrderLine.Quantity;
+                    SalesLine."Gen. Prod. Posting Group" := 'RETAIL';
+                    SalesLine."Gen. Bus. Posting Group" := 'EU';
+                    SalesLine."VAT Bus. Posting Group" := 'EU';
                     SalesLine.INSERT;
                 until WebshopOrderLine.Next() = 0;
                 SalesHeader.Insert();

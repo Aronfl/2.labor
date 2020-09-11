@@ -8,7 +8,7 @@ table 50101 "Webshop Order Line"
 
     fields
     {
-        field(1; "Item No."; Code[20]) //cikkszám (legördülő)
+        field(1; "Item No."; Code[20])
         {
             Editable = true;
             Caption = 'Item No.';
@@ -20,7 +20,7 @@ table 50101 "Webshop Order Line"
             end;
         }
 
-        field(2; "Quantity"; Decimal) // mennyiség
+        field(2; "Quantity"; Decimal)
         {
             Caption = 'Quantity';
             DataClassification = CustomerContent;
@@ -43,20 +43,20 @@ table 50101 "Webshop Order Line"
             end;
         }
 
-        field(4; "Base unit of measure"; Code[10]) // mértékegység kód
+        field(4; "Base unit of measure"; Code[10])
         {
             Caption = 'Unit code';
             FieldClass = FlowField;
             CalcFormula = lookup (Item."Base Unit of Measure" where("No." = field("Item No.")));
         }
 
-        field(5; "Price"; Decimal) //ár,de nem írjuk ide - 2. kérdés: Miért nem? válasz: Calculated field lesz
+        field(5; "Price"; Decimal)
         {
             Caption = 'Price';
             Editable = false;
         }
 
-        field(6; "Line No."; Integer) // Egyedi azonosító - 3. kérdés: Mi lesz a kulcs, és miért?
+        field(6; "Line No."; Integer)
         {
             Caption = 'Line No.';
             DataClassification = CustomerContent;

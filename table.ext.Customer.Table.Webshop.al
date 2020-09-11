@@ -19,6 +19,3 @@ tableextension 50120 CustomerWebshopExtension extends Customer
         }
     }
 }
-/*Egészítsük ki a Vevő táblát egy új, integer típusú mezővel:
- Webshop azonosító. A mező legyen szerkeszthető, negatív számot ne lehessen megadni benne, 
- és tegyük ki a Vevőkartonra az Általános fülre.  */

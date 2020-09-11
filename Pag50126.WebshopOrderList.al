@@ -96,7 +96,6 @@ page 50126 "Webshop Order List"
     var
         SalesLine: Record "Sales Line";
         SalesHeader: Record "Sales Header";
-        //WebshopOrderDocument: Record "Webshop Order Header table";
         WebshopOrderLine: Record "Webshop Order Line";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         NewNoSeries: Code[20];

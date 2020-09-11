@@ -18,14 +18,12 @@ page 50124 "Webshop Order Document"
 
                 field("Webshop User ID"; WebshopUserId)
                 {
-                    LookupPageId = "Customer List";
+                    LookupPageId = "Customer Card";
                 }
 
-                // A fejen a webshop felhasználói azonosító ne jelenjen meg, viszont a Vevő neve igen.
-                // TODO
                 field("BC Customer ID"; "BC Customer ID")
                 {
-
+                    DrillDownPageId = "Customer Card";
                 }
 
                 field("BC Order ID"; "BC Order ID")
@@ -47,7 +45,6 @@ page 50124 "Webshop Order Document"
             part(lines; "Webshop Order Line Subpage")
             {
                 SubPageLink = "Webshop Order ID" = field("Webshop Order ID");
-                // SubPageView = sorting("Order No.") where
             }
         }
     }

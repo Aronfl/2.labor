@@ -24,14 +24,13 @@ table 50100 "Webshop Order Header table"
             end;
         }
 
-        field(3; "BC Customer ID"; Code[20]) // BC vevő azonosító
+        field(3; "BC Customer ID"; Code[20])
         {
             Caption = 'Customer ID from BC';
             FieldClass = FlowField;
             CalcFormula = lookup (Customer."No." where(CustomercardWebshopUserId = field(WebshopUserId)));
-            // TableRelation = Customer;
         }
-        field(4; "BC Order ID"; Code[20]) // BC rendelés szám
+        field(4; "BC Order ID"; Code[20])
         {
             Caption = 'Order No.';
             TableRelation = "Sales Header";

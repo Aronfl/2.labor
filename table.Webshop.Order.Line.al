@@ -38,6 +38,7 @@ table 50101 "Webshop Order Line"
             CalcFormula = lookup ("Item"."Unit Price" where("No." = field("Item No.")));
             trigger OnValidate()
             begin
+
                 CalcPrice();
             end;
         }
@@ -49,7 +50,7 @@ table 50101 "Webshop Order Line"
             CalcFormula = lookup (Item."Base Unit of Measure" where("No." = field("Item No.")));
         }
 
-        field(5; "Price"; Integer) //ár,de nem írjuk ide - 2. kérdés: Miért nem? válasz: Calculated field lesz
+        field(5; "Price"; Decimal) //ár,de nem írjuk ide - 2. kérdés: Miért nem? válasz: Calculated field lesz
         {
             Caption = 'Price';
             Editable = false;
@@ -91,7 +92,18 @@ table 50101 "Webshop Order Line"
     /// </summary>
     local procedure CalcPrice()
     begin
+        CalcFields("Unit Price");
         Price := Quantity * "Unit Price";
+        // Message(
+        //     'the calculated price is: ' + Format(Price) +
+        //     ', where quantity was: ' + Format(Quantity) +
+        //     ', and unit price was: ' + Format("Unit Price")
+        // );
+    end;
+
+    trigger OnInsert()
+    begin
+        CalcPrice();
     end;
 
     var

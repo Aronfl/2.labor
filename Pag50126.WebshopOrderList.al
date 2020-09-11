@@ -101,7 +101,6 @@ page 50126 "Webshop Order List"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         NewNoSeries: Code[20];
         Customer: Record "Customer";
-        ItemSold: Record Item;
 
     begin
         CurrPage.SetSelectionFilter(Rec);
@@ -135,25 +134,13 @@ page 50126 "Webshop Order List"
                 WebshopOrderLine.SetRange("Webshop Order ID", Rec."Webshop Order ID");
                 repeat
                     if (WebshopOrderLine."Item No." <> '') then begin
-                        ItemSold.Get(WebshopOrderLine."Item No.");
-                        SalesLine.Description := ItemSold.Description;
-                        SalesLine."Document No." := SalesHeader."No.";
                         SalesLine."Document Type" := SalesHeader."Document Type";
-                        SalesLine."BOM Item No." := WebshopOrderLine."Item No.";
-                        SalesLine."No." := WebshopOrderLine."Item No.";
-                        SalesLine.Type := SalesLine.Type::Item;
+                        SalesLine."Document No." := SalesHeader."No.";
                         SalesLine."Line No." := WebshopOrderLine."Line No.";
-                        SalesLine."Unit Price" := ItemSold."Unit Price";
-                        SalesLine."Sell-to Customer No." := SalesHeader."Sell-to Customer No.";
-                        SalesLine.Quantity := WebshopOrderLine.Quantity;
-                        SalesLine."Quantity (Base)" := WebshopOrderLine.Quantity;
-                        SalesLine."Qty. to Invoice" := WebshopOrderLine.Quantity;
-                        SalesLine."Qty. to Invoice (Base)" := WebshopOrderLine.Quantity;
-                        SalesLine."Qty. to Ship" := WebshopOrderLine.Quantity;
-                        SalesLine."Qty. to Ship (Base)" := WebshopOrderLine.Quantity;
-                        SalesLine."Gen. Prod. Posting Group" := 'RETAIL';
-                        SalesLine."Gen. Bus. Posting Group" := 'EU';
-                        SalesLine."VAT Bus. Posting Group" := 'EU';
+                        SalesLine.Validate("Sell-to Customer No.", SalesHeader."Sell-to Customer No.");
+                        SalesLine.Type := SalesLine.Type::Item;
+                        SalesLine.Validate("No.", WebshopOrderLine."Item No.");
+                        SalesLine.Validate(Quantity, WebshopOrderLine.Quantity);
                         SalesLine.Insert();
                     end;
                 until WebshopOrderLine.Next() = 0;

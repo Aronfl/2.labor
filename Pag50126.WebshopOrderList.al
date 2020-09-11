@@ -105,7 +105,7 @@ page 50126 "Webshop Order List"
         CurrPage.SetSelectionFilter(Rec);
         If (Rec.FindSet()) then begin
             repeat
-                Message('processing order with id: ' + Format(Rec."Webshop Order ID"));
+                // Message('processing order with id: ' + Format(Rec."Webshop Order ID"));
                 Customer.Get(Rec."BC Customer ID");
                 SalesHeader.Init();
                 Rec.CalcFields("BC Customer ID");

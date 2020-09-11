@@ -33,7 +33,18 @@ page 50126 "Webshop Order List"
                 field("BC Order No."; "BC Order ID")
                 {
                     ApplicationArea = All;
-                    DrillDownPageId = "Sales Order";
+                    trigger OnDrillDown()
+                    var
+                        SalesHeader: Record "Sales Header";
+                        SalesHeaderPage: Page "Sales Order";
+                    begin
+                        SalesHeader.Reset();
+                        SalesHeader.SetRange("No.", "BC Order ID");
+                        Clear(SalesHeaderPage);
+                        SalesHeaderPage.SetRecord(SalesHeader);
+                        SalesHeaderPage.SetTableView(SalesHeader);
+                        SalesHeaderPage.Run();
+                    end;
                 }
 
                 field(WebshopUserId; WebshopUserId)
@@ -85,24 +96,27 @@ page 50126 "Webshop Order List"
     var
         SalesLine: Record "Sales Line";
         SalesHeader: Record "Sales Header";
-        WebshopOrderDocument: Record "Webshop Order Header table";
+        //WebshopOrderDocument: Record "Webshop Order Header table";
         WebshopOrderLine: Record "Webshop Order Line";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         NewNoSeries: Code[20];
-        SellToCustomer: Record "Customer";
+        Customer: Record "Customer";
+        ItemSold: Record Item;
+
     begin
         CurrPage.SetSelectionFilter(Rec);
         If (Rec.FindSet()) then begin
             repeat
                 Message('processing order with id: ' + Format(Rec."Webshop Order ID"));
-
+                Customer.Get(Rec."BC Customer ID");
                 SalesHeader.Init();
-                SalesHeader."Bill-to Customer No." := WebshopOrderDocument."BC Customer ID";
-                SalesHeader."Sell-to Customer No." := WebshopOrderDocument."BC Customer ID";
+                Rec.CalcFields("BC Customer ID");
+                SalesHeader."Bill-to Customer No." := Rec."BC Customer ID";
+                SalesHeader."Sell-to Customer No." := Rec."BC Customer ID";
                 SalesHeader."Document Date" := Today();
                 SalesHeader."Document Type" := "Sales Document Type"::Order;
-                WebshopOrderLine.SetRange("Webshop Order ID", Rec."Webshop Order ID");
-                WebshopOrderLine.FindFirst();
+                Rec.SetRange("Webshop Order ID", Rec."Webshop Order ID");
+                Rec.FindFirst();
                 NoSeriesMgt.InitSeries(
                     "SalesHeader".GetNoSeriesCode,
                     SalesHeader."No. Series",
@@ -111,32 +125,37 @@ page 50126 "Webshop Order List"
                     NewNoSeries
                 );
                 SalesHeader."No." := NoSeriesMgt.GetNextNo(NewNoSeries, Today(), true);
-                SellToCustomer.SetFilter("No.", WebshopOrderDocument."BC Customer ID");
-                SalesHeader."Sell-to Customer Name" := SellToCustomer.Name;
-                SalesHeader."Sell-to Address" := SellToCustomer.Address;
-                SalesHeader."Order Date" := WebshopOrderDocument."Order Date";
-
+                SalesHeader."Sell-to Customer Name" := Customer.Name;
+                SalesHeader."Bill-to Name" := Customer.Name;
+                SalesHeader."Sell-to Address" := Customer.Address;
+                SalesHeader."Bill-to Customer No." := Customer."No.";
+                SalesHeader."Bill-to Address" := Customer.Address;
+                SalesHeader."Order Date" := Rec."Order Date";
                 SalesHeader.Insert();
-                //TODO: fill it up with data
+                WebshopOrderLine.SetRange("Webshop Order ID", Rec."Webshop Order ID");
                 repeat
-                    SalesLine."Document No." := SalesHeader."No.";
-                    SalesLine."Document Type" := SalesHeader."Document Type";
-                    SalesLine."No." := WebshopOrderLine."Item No.";
-                    SalesLine.Type := SalesLine.Type::Item;
-                    SalesLine."Line No." := WebshopOrderLine."Line No.";
-                    SalesLine."Unit Price" := WebshopOrderLine."Unit Price";
-
-                    //TODO: No. increment by 10000
-                    SalesLine.Quantity := WebshopOrderLine.Quantity;
-                    SalesLine."Quantity (Base)" := WebshopOrderLine.Quantity;
-                    SalesLine."Qty. to Invoice" := WebshopOrderLine.Quantity;
-                    SalesLine."Qty. to Invoice (Base)" := WebshopOrderLine.Quantity;
-                    SalesLine."Qty. to Ship" := WebshopOrderLine.Quantity;
-                    SalesLine."Qty. to Ship (Base)" := WebshopOrderLine.Quantity;
-                    SalesLine."Gen. Prod. Posting Group" := 'RETAIL';
-                    SalesLine."Gen. Bus. Posting Group" := 'EU';
-                    SalesLine."VAT Bus. Posting Group" := 'EU';
-                    SalesLine.INSERT;
+                    if (WebshopOrderLine."Item No." <> '') then begin
+                        ItemSold.Get(WebshopOrderLine."Item No.");
+                        SalesLine.Description := ItemSold.Description;
+                        SalesLine."Document No." := SalesHeader."No.";
+                        SalesLine."Document Type" := SalesHeader."Document Type";
+                        SalesLine."BOM Item No." := WebshopOrderLine."Item No.";
+                        SalesLine."No." := WebshopOrderLine."Item No.";
+                        SalesLine.Type := SalesLine.Type::Item;
+                        SalesLine."Line No." := WebshopOrderLine."Line No.";
+                        SalesLine."Unit Price" := ItemSold."Unit Price";
+                        SalesLine."Sell-to Customer No." := SalesHeader."Sell-to Customer No.";
+                        SalesLine.Quantity := WebshopOrderLine.Quantity;
+                        SalesLine."Quantity (Base)" := WebshopOrderLine.Quantity;
+                        SalesLine."Qty. to Invoice" := WebshopOrderLine.Quantity;
+                        SalesLine."Qty. to Invoice (Base)" := WebshopOrderLine.Quantity;
+                        SalesLine."Qty. to Ship" := WebshopOrderLine.Quantity;
+                        SalesLine."Qty. to Ship (Base)" := WebshopOrderLine.Quantity;
+                        SalesLine."Gen. Prod. Posting Group" := 'RETAIL';
+                        SalesLine."Gen. Bus. Posting Group" := 'EU';
+                        SalesLine."VAT Bus. Posting Group" := 'EU';
+                        SalesLine.Insert();
+                    end;
                 until WebshopOrderLine.Next() = 0;
                 Rec."Order Status" := OrderStatusEnum::processed;
                 Rec."BC Order ID" := SalesHeader."No.";

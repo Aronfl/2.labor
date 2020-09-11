@@ -15,6 +15,13 @@ table 50100 "Webshop Order Header table"
         field(2; WebshopUserId; Integer)
         {
             Caption = 'Webshop User ID';
+            trigger OnValidate()
+            begin
+                if WebshopUserId < 0 then begin
+                    Message('Webshop ID cannot be negative number');
+                    WebshopUserId := 0;
+                end;
+            end;
         }
 
         field(3; "BC Customer ID"; Code[20]) // BC vevő azonosító

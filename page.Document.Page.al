@@ -16,7 +16,7 @@ page 50124 "Webshop Order Document"
                     Editable = false;
                 }
 
-                field("Webshop User ID"; WebshopUserId)
+                field("User Name"; UserName)
                 {
                     LookupPageId = "Customer Card";
                 }

@@ -48,23 +48,4 @@ page 50124 "Webshop Order Document"
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
-    var
-        myInt: Integer;
 }

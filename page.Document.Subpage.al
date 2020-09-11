@@ -19,8 +19,6 @@ page 50125 "Webshop Order Line Subpage"
                     TableRelation = Item;
                 }
 
-                // A soron pedig a cikkek Megnevezése is szerepeljen.
-
                 field("Item Name"; Description)
                 {
 

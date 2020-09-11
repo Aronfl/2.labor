@@ -89,6 +89,7 @@ page 50126 "Webshop Order List"
         WebshopOrderLine: Record "Webshop Order Line";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         NewNoSeries: Code[20];
+        SellToCustomer: Record "Customer";
     begin
         CurrPage.SetSelectionFilter(Rec);
         If (Rec.FindSet()) then begin
@@ -110,6 +111,11 @@ page 50126 "Webshop Order List"
                     NewNoSeries
                 );
                 SalesHeader."No." := NoSeriesMgt.GetNextNo(NewNoSeries, Today(), true);
+                SellToCustomer.SetFilter("No.", WebshopOrderDocument."BC Customer ID");
+                SalesHeader."Sell-to Customer Name" := SellToCustomer.Name;
+                SalesHeader."Sell-to Address" := SellToCustomer.Address;
+                SalesHeader."Order Date" := WebshopOrderDocument."Order Date";
+
                 SalesHeader.Insert();
                 //TODO: fill it up with data
                 repeat
@@ -118,6 +124,7 @@ page 50126 "Webshop Order List"
                     SalesLine."No." := WebshopOrderLine."Item No.";
                     SalesLine.Type := SalesLine.Type::Item;
                     SalesLine."Line No." := WebshopOrderLine."Line No.";
+                    SalesLine."Unit Price" := WebshopOrderLine."Unit Price";
 
                     //TODO: No. increment by 10000
                     SalesLine.Quantity := WebshopOrderLine.Quantity;

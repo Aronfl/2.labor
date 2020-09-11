@@ -7,7 +7,6 @@ page 50125 "Webshop Order Line Subpage"
     DelayedInsert = true;
     Editable = true;
 
-
     layout
     {
         area(Content)
@@ -19,45 +18,34 @@ page 50125 "Webshop Order Line Subpage"
                     TableRelation = Item;
                 }
 
-                // A soron pedig a cikkek Megnevezése is szerepeljen.
-
                 field("Item Name"; Description)
                 {
-
                 }
 
                 field("Quantity"; "Quantity")
                 {
-
                 }
 
                 field("Unit code"; "Base unit of measure")
                 {
-
                 }
 
                 field(Price; Price)
                 {
-
                 }
 
                 field("Line No."; "Line No.")
                 {
-
                 }
 
                 field("Webshop Order ID"; "Webshop Order ID")
                 {
-
                 }
 
                 field("Unit Price"; "Unit Price")
                 {
-
                 }
-
             }
-
         }
     }
 }

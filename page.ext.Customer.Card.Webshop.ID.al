@@ -2,8 +2,7 @@ pageextension 50120 CustomerWebshopExtensionCard extends "Customer Card"
 {
     layout
     {
-
-        addafter(Blocked)
+        addlast(General)
         {
             field("Webshop User Id"; CustomercardWebshopUserId)
             {

@@ -63,7 +63,7 @@ page 50126 "Webshop Order List"
     {
         area(Processing)
         {
-            action("Add sales order from selected webshop orders")
+            action("Process selected orders")
             {
                 Promoted = true;
                 PromotedCategory = Process;

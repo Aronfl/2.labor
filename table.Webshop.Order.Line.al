@@ -105,8 +105,4 @@ table 50101 "Webshop Order Line"
     begin
         CalcPrice();
     end;
-
-    var
-        SalesSetup: Record "Sales & Receivables Setup";
-        NoSeriesMgt: Codeunit NoSeriesManagement;
 }

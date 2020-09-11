@@ -28,7 +28,7 @@ page 50124 "Webshop Order Document"
 
                 field("BC Order ID"; "BC Order ID")
                 {
-                    LookupPageId = "Sales Order";
+                    DrillDownPageId = "Sales Order";
                 }
 
                 field("Order Date"; "Order Date")

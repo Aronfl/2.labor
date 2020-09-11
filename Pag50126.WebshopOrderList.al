@@ -33,6 +33,7 @@ page 50126 "Webshop Order List"
                 field("BC Order No."; "BC Order ID")
                 {
                     ApplicationArea = All;
+                    DrillDownPageId = "Sales Order";
                 }
 
                 field(WebshopUserId; WebshopUserId)

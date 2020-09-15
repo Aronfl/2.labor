@@ -5,6 +5,7 @@ page 50125 "Webshop Order Line Subpage"
     SourceTable = "Webshop Order Line";
     AutoSplitKey = true;
     DelayedInsert = true;
+    Editable = true;
 
     layout
     {
@@ -16,31 +17,35 @@ page 50125 "Webshop Order Line Subpage"
                 {
                     TableRelation = Item;
                 }
-                field(Quantity; Quantity)
+
+                field("Item Name"; Description)
                 {
-
-
                 }
-                field("Unit code"; "Unit code")
+
+                field("Quantity"; "Quantity")
                 {
-
-
                 }
+
+                field("Unit code"; "Base unit of measure")
+                {
+                }
+
                 field(Price; Price)
                 {
-
-
                 }
-                field("Unique ID"; "Unique ID")
+
+                field("Line No."; "Line No.")
                 {
+                }
 
+                field("Webshop Order ID"; "Webshop Order ID")
+                {
+                }
 
+                field("Unit Price"; "Unit Price")
+                {
                 }
             }
         }
     }
-
-
-    var
-        myInt: Integer;
 }

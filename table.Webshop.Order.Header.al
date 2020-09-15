@@ -1,8 +1,8 @@
-table 50100 "Webshop Order Header"
+table 50100 "Webshop Order Header table"
 {
     Caption = 'Webshop Order Header';
-    LookupPageId = "Customer List";
-    DrillDownPageId = "Item List";
+    DrillDownPageId = "Webshop Order List";
+    LookupPageId = "Webshop Order List";
 
     fields
     {
@@ -10,23 +10,30 @@ table 50100 "Webshop Order Header"
         field(1; "Webshop Order ID"; Integer)
         {
             Caption = 'Webshop Order ID';
+            AutoIncrement = true;
         }
-        field(2; "Webshop User ID"; Integer)
+        field(2; WebshopUserId; Integer)
         {
             Caption = 'Webshop User ID';
-            TableRelation = Customer."No.";
+            trigger OnValidate()
+            begin
+                if WebshopUserId < 0 then begin
+                    Message('Webshop ID cannot be negative number');
+                    WebshopUserId := 0;
+                end;
+            end;
         }
 
-        field(3; "BC Customer ID"; Code[20]) // BC vevő azonosító
+        field(3; "BC Customer ID"; Code[20])
         {
             Caption = 'Customer ID from BC';
             FieldClass = FlowField;
-            CalcFormula = lookup (Customer."No." where("No." = field("BC Customer ID")));
-
+            CalcFormula = lookup (Customer."No." where(CustomercardWebshopUserId = field(WebshopUserId)));
         }
-        field(4; "Order No."; Code[20]) // BC rendelés szám
+        field(4; "BC Order ID"; Code[20])
         {
             Caption = 'Order No.';
+            TableRelation = "Sales Header";
         }
         field(5; "Order Date"; Date)
         {
@@ -35,6 +42,13 @@ table 50100 "Webshop Order Header"
         field(6; "Order Status"; Enum OrderStatusEnum)
         {
             Caption = 'Order Status';
+        }
+
+        field(7; UserName; Text[100])
+        {
+            Caption = 'User Name';
+            FieldClass = FlowField;
+            CalcFormula = lookup (Customer.Name where(CustomercardWebshopUserId = field(WebshopUserId)));
         }
 
     }

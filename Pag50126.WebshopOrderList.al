@@ -94,62 +94,17 @@ page 50126 "Webshop Order List"
     /// </summary>
     internal procedure AddRecordsToSalesOrders()
     var
-        SalesLine: Record "Sales Line";
-        SalesHeader: Record "Sales Header";
-        WebshopOrderLine: Record "Webshop Order Line";
-        NoSeriesMgt: Codeunit NoSeriesManagement;
-        NewNoSeries: Code[20];
-        Customer: Record "Customer";
+        WebshopUtilities: Codeunit WebshopUtilities;
 
     begin
+        //Message('Button was pressed pls help me die :(((');
         CurrPage.SetSelectionFilter(Rec);
-        If (Rec.FindSet()) then begin
-            repeat
-                // Message('processing order with id: ' + Format(Rec."Webshop Order ID"));
-                Customer.Get(Rec."BC Customer ID");
-                SalesHeader.Init();
-                Rec.CalcFields("BC Customer ID");
-                SalesHeader."Bill-to Customer No." := Rec."BC Customer ID";
-                SalesHeader."Sell-to Customer No." := Rec."BC Customer ID";
-                SalesHeader."Document Date" := Today();
-                SalesHeader."Document Type" := "Sales Document Type"::Order;
-                Rec.SetRange("Webshop Order ID", Rec."Webshop Order ID");
-                Rec.FindFirst();
-                NoSeriesMgt.InitSeries(
-                    "SalesHeader".GetNoSeriesCode,
-                    SalesHeader."No. Series",
-                    SalesHeader."Posting Date",
-                    SalesHeader."No.",
-                    NewNoSeries
-                );
-                SalesHeader."No." := NoSeriesMgt.GetNextNo(NewNoSeries, Today(), true);
-                SalesHeader."Sell-to Customer Name" := Customer.Name;
-                SalesHeader."Bill-to Name" := Customer.Name;
-                SalesHeader."Sell-to Address" := Customer.Address;
-                SalesHeader."Bill-to Customer No." := Customer."No.";
-                SalesHeader."Bill-to Address" := Customer.Address;
-                SalesHeader."Order Date" := Rec."Order Date";
-                SalesHeader.Insert();
-                WebshopOrderLine.SetRange("Webshop Order ID", Rec."Webshop Order ID");
-                repeat
-                    if (WebshopOrderLine."Item No." <> '') then begin
-                        SalesLine."Document Type" := SalesHeader."Document Type";
-                        SalesLine."Document No." := SalesHeader."No.";
-                        SalesLine."Line No." := WebshopOrderLine."Line No.";
-                        SalesLine.Validate("Sell-to Customer No.", SalesHeader."Sell-to Customer No.");
-                        SalesLine.Type := SalesLine.Type::Item;
-                        SalesLine.Validate("No.", WebshopOrderLine."Item No.");
-                        SalesLine.Validate(Quantity, WebshopOrderLine.Quantity);
-                        SalesLine.Insert();
-                    end;
-                until WebshopOrderLine.Next() = 0;
-                Rec."Order Status" := OrderStatusEnum::processed;
-                Rec."BC Order ID" := SalesHeader."No.";
-                Rec.Modify();
 
+        If (Rec.FindSet()) then
+            repeat
+                WebshopUtilities.GenerateSalesOrders(Rec);
             until Rec.Next() = 0;
-            Rec.ClearMarks();
-        end;
+        Rec.ClearMarks();
     end;
 
 }

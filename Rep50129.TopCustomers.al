@@ -1,4 +1,4 @@
-report 50129 "Top Customers"
+report 50129 "Top Webshop Customers"
 {
     WordLayout = 'TopCustomers.docx';
     RDLCLayout = 'TopCustomers.rdlc';
@@ -52,7 +52,5 @@ report 50129 "Top Customers"
     }
     var
         TempCustomer: Record Customer;
-        TempItem: Record Item;
-
         WebshopUtils: Codeunit WebshopUtilities;
 }

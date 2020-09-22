@@ -5,6 +5,10 @@ codeunit 50126 WebshopUtilities
 
     end;
 
+    /// <summary>
+    /// generates sales orders from the Records provided in the WebshopOrderHeaderRecord param
+    /// </summary>
+    /// <param name="WebshopOrderHeaderRecord"></param>
     procedure GenerateSalesOrders(
         WebshopOrderHeaderRecord: Record "Webshop Order Header table"
     )
@@ -59,6 +63,11 @@ codeunit 50126 WebshopUtilities
         WebshopOrderHeaderRecord.Modify();
     end;
 
+    /// <summary>
+    /// Creates a comma separated plain text representation of all the unique items bought by the customer provided in CustomerNo param
+    /// </summary>
+    /// <param name="CustomerNo"></param>
+    /// <returns name="JoinedText"></returns>
     procedure GetItemsBughtByCustomerText(
         CustomerNo: Code[20]
     ) JoinedText: Text;
@@ -71,32 +80,61 @@ codeunit 50126 WebshopUtilities
         TempWebshopOrderHeader.SetFilter(
             "BC Customer ID", CustomerNo
         );
-        TempWebshopOrderHeader.FindFirst();
-        repeat
-            Message('Processing order: ' + Format(TempWebshopOrderHeader."Webshop Order ID"));
-            TempWebshopOrderLine.SetRange(
-                "Webshop Order ID", TempWebshopOrderHeader."Webshop Order ID"
-            );
-            TempWebshopOrderLine.FindFirst();
+        if (TempWebshopOrderHeader.FindFirst()) then begin
             repeat
-                TempWebshopOrderLine.CalcFields(Description);
-                if not (ItemsBought.Contains(TempWebshopOrderLine.Description)) then
-                    ItemsBought.Add(TempWebshopOrderLine.Description);
-            until TempWebshopOrderLine.Next() = 0;
-        until TempWebshopOrderHeader.Next() = 0;
-        JoinedText := JoinText(ItemsBought);
+                //Message('Processing order: ' + Format(TempWebshopOrderHeader."Webshop Order ID"));
+                TempWebshopOrderLine.SetRange(
+                    "Webshop Order ID", TempWebshopOrderHeader."Webshop Order ID"
+                );
+                if (TempWebshopOrderLine.FindFirst()) then begin
+                    repeat
+                        TempWebshopOrderLine.CalcFields(Description);
+                        if not (ItemsBought.Contains(TempWebshopOrderLine.Description)) then
+                            ItemsBought.Add(TempWebshopOrderLine.Description);
+                    until TempWebshopOrderLine.Next() = 0;
+                end;
+            until TempWebshopOrderHeader.Next() = 0;
+            JoinedText := JoinText(ItemsBought);
+        end;
     end;
 
-    internal procedure JoinText(
-        TextArray: List of [Text]
+    /// <summary>
+    /// Generates a comma separated plain text representation of the List provided in the TextParts param
+    /// </summary>
+    /// <param name="TextParts"></param>
+    /// <returns name="JoinedText"></returns>
+    local procedure JoinText(
+        TextParts: List of [Text]
     ) JoinedText: Text
     var
         TextItem: Text;
     begin
-        foreach TextItem in TextArray do begin
-            JoinedText += TextItem + ', ';
+        foreach TextItem in TextParts do begin
+            JoinedText += TextItem + '; ';
         end;
-        JoinedText := JoinedText.TrimEnd(', ');
+        JoinedText := JoinedText.TrimEnd('; ');
+    end;
+
+    /// <summary>
+    /// Returns the total sales value in the default currency for the item provided in ItemId param
+    /// </summary>
+    /// <param name="ItemId"></param>
+    /// <returns name="TotalSales"></returns>
+    procedure GetTotalSalesForItem(
+        ItemId: Code[20]
+    ) TotalSales: Decimal
+    var
+        CurrentItem: Record Item;
+        CurrentWebshopLine: Record "Webshop Order Line";
+    begin
+        TotalSales := 0;
+        CurrentWebshopLine.SetFilter("Item No.", ItemId);
+        if (CurrentWebshopLine.FindFirst()) then begin
+            repeat
+                CurrentWebshopLine.CalcPrice();
+                TotalSales += CurrentWebshopLine.Price;
+            until CurrentWebshopLine.Next() = 0;
+        end;
     end;
 
 }

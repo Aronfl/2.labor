@@ -90,7 +90,7 @@ table 50101 "Webshop Order Line"
     /// <summary> 
     /// Description for CalcPrice.
     /// </summary>
-    local procedure CalcPrice()
+    procedure CalcPrice()
     begin
         CalcFields("Unit Price");
         Price := Quantity * "Unit Price";

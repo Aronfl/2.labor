@@ -51,6 +51,12 @@ table 50100 "Webshop Order Header table"
             CalcFormula = lookup (Customer.Name where(CustomercardWebshopUserId = field(WebshopUserId)));
         }
 
+        field(8; Price; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = sum ("Webshop Order Line".Price where("Webshop Order ID" = field("Webshop Order ID")));
+        }
+
     }
 
     keys

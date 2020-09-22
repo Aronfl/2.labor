@@ -84,8 +84,6 @@ page 50126 "Webshop Order List"
                 begin
                     AddRecordsToSalesOrders();
                 end;
-
-
             }
         }
     }

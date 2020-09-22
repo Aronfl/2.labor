@@ -73,11 +73,15 @@ enum 50110 OrderStatusEnum
 
     value(0; received)
     {
+
+        Caption = 'received';
     }
     value(1; processed)
     {
+        Caption = 'processed';
     }
     value(2; shipped)
     {
+        Caption = 'shipped';
     }
 }

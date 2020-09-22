@@ -265,6 +265,9 @@ End Function
         <Field Name="MoneySpentFormat">
           <DataField>MoneySpentFormat</DataField>
         </Field>
+        <Field Name="ItemsBought">
+          <DataField>ItemsBought</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

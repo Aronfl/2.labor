@@ -8,7 +8,6 @@ report 50129 "Top Customers"
     {
         dataitem(WebshopOrder; "Webshop Order Header table")
         {
-
             column(CustomerName; TempCustomer.Name)
             {
 
@@ -19,11 +18,18 @@ report 50129 "Top Customers"
             {
 
             }
+
+            column(ItemsBought; WebshopUtils.JoinText(WebshopUtils.GetItemsBughtByCustomer(TempCustomer."No.")))
+            {
+
+            }
             trigger OnAfterGetRecord()
             begin
                 WebshopOrder.CalcFields("BC Customer ID", Price);
                 TempCustomer.Get(WebshopOrder."BC Customer ID");
             end;
+
+
         }
     }
     requestpage
@@ -46,4 +52,7 @@ report 50129 "Top Customers"
     }
     var
         TempCustomer: Record Customer;
+        TempItem: Record Item;
+
+        WebshopUtils: Codeunit WebshopUtilities;
 }

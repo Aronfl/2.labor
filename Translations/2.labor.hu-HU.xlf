@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="hu-HU" original="2.labor">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 2430087453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Webshop Order Header</source>
+          <target>Webáruház rendelés adatok</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2430087453 - Field 4233284561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Webshop Order ID</source>
+          <target>Webshop rendelés azonosító</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field Webshop Order ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2430087453 - Field 2573772372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Webshop User ID</source>
+          <target>Webshop felhasználó azonosító</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field WebshopUserId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2430087453 - Field 2026147028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer ID from BC</source>
+          <target>BC vevő azonosító</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field BC Customer ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2430087453 - Field 888601158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order No.</source>
+          <target>Rendelésszám </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field BC Order ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2430087453 - Field 2632124822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Date</source>
+          <target>Megrendelés dátuma </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field Order Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2430087453 - Field 4145127342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Status</source>
+          <target>Rendelés állapota</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field Order Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2430087453 - Field 3549826426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Name</source>
+          <target>Felhasználónév</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field UserName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2430087453 - Field 3635338911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price</source>
+          <target>Ár</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Webshop Order Line</source>
+          <target>Webáruház rendelési tételek</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <target>Cikkszám</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <target>Mennyiség</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Price</source>
+          <target>Egységár</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Unit Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 2317833894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit code</source>
+          <target>Mértékegységkód</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Base unit of measure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 3635338911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price</source>
+          <target>Ár</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <target>Sor azonosító</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 4233284561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order No.</source>
+          <target>Rendelésszám</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Webshop Order ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target>Megjegyzés</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3837906084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Webshop Order List</source>
+          <target>Webshop megrendelések</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Webshop Order List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1468512087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Webshop Order Document</source>
+          <target>Webshop rendlés lap</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Webshop Order Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 75802653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <target>Tételek</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Webshop Order Line Subpage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Webshop ID</source>
+          <target>Webshop azonosító</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerWebshopExtensionCard - Control Webshop User Id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1531967187 - Field 624790156 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Webshop User ID ext</source>
+          <target>Webshop felhasználó azonosító</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustomerWebshopExtension - Field CustomercardWebshopUserId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1541608043 - EnumValue 2864445561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>received</source>
+          <target>fogadott</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum OrderStatusEnum - EnumValue received - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1541608043 - EnumValue 3339143102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>processed</source>
+          <target>feldolgozott</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum OrderStatusEnum - EnumValue processed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1541608043 - EnumValue 1701714589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>shipped</source>
+          <target>kiszállított</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum OrderStatusEnum - EnumValue shipped - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

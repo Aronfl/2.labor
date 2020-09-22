@@ -34,5 +34,6 @@
   ],
   "contextSensitiveHelpUrl": "https://2.labor.com/help/",
   "showMyCode": true,
-  "runtime": "4.0"
+  "runtime": "4.0",
+  "features": [ "TranslationFile" ]
 }

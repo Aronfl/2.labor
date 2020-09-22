@@ -59,45 +59,44 @@ codeunit 50126 WebshopUtilities
         WebshopOrderHeaderRecord.Modify();
     end;
 
-    procedure GetItemsBughtByCustomer(
+    procedure GetItemsBughtByCustomerText(
         CustomerNo: Code[20]
-    ) ItemsBought: array[999999] of Text //max size of an array in bc
+    ) JoinedText: Text;
     var
         TempItem: Record Item;
         TempWebshopOrderLine: Record "Webshop Order Line";
         TempWebshopOrderHeader: Record "Webshop Order Header table";
-        ArrayCount: Integer;
+        ItemsBought: List of [Text];
     begin
-        ArrayCount := 0;
         TempWebshopOrderHeader.SetFilter(
             "BC Customer ID", CustomerNo
         );
         TempWebshopOrderHeader.FindFirst();
         repeat
-
+            Message('Processing order: ' + Format(TempWebshopOrderHeader."Webshop Order ID"));
             TempWebshopOrderLine.SetRange(
                 "Webshop Order ID", TempWebshopOrderHeader."Webshop Order ID"
             );
             TempWebshopOrderLine.FindFirst();
             repeat
                 TempWebshopOrderLine.CalcFields(Description);
-                ItemsBought[ArrayCount] := TempWebshopOrderLine.Description;
-                ArrayCount += 1;
+                if not (ItemsBought.Contains(TempWebshopOrderLine.Description)) then
+                    ItemsBought.Add(TempWebshopOrderLine.Description);
             until TempWebshopOrderLine.Next() = 0;
         until TempWebshopOrderHeader.Next() = 0;
+        JoinedText := JoinText(ItemsBought);
     end;
 
-    procedure JoinText(
-        TextArray: array[999999] of Text
+    internal procedure JoinText(
+        TextArray: List of [Text]
     ) JoinedText: Text
     var
-        ArrayCount: Integer;
+        TextItem: Text;
     begin
-        ArrayCount := 0;
-        while TextArray[ArrayCount] <> '' do begin
-            JoinedText += ', ' + TextArray[ArrayCount];
-            JoinedText := JoinedText.TrimEnd(', ');
+        foreach TextItem in TextArray do begin
+            JoinedText += TextItem + ', ';
         end;
+        JoinedText := JoinedText.TrimEnd(', ');
     end;
 
 }

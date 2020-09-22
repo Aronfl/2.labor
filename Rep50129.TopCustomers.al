@@ -19,7 +19,7 @@ report 50129 "Top Customers"
 
             }
 
-            column(ItemsBought; WebshopUtils.JoinText(WebshopUtils.GetItemsBughtByCustomer(TempCustomer."No.")))
+            column(ItemsBought; WebshopUtils.GetItemsBughtByCustomerText(TempCustomer."No."))
             {
 
             }

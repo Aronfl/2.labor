@@ -77,6 +77,7 @@ page 50126 "Webshop Order List"
         {
             action("Process selected orders")
             {
+                Caption = 'Process selected orders';
                 Promoted = true;
                 PromotedCategory = Process;
                 ApplicationArea = All;

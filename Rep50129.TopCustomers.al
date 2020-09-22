@@ -4,6 +4,7 @@ report 50129 "Top Webshop Customers"
     RDLCLayout = 'TopCustomers.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
+    DefaultLayout = Word;
     dataset
     {
         dataitem(WebshopOrder; "Webshop Order Header table")

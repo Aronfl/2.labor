@@ -8,14 +8,6 @@ report 50129 "Top Customers"
     {
         dataitem(WebshopOrder; "Webshop Order Header table")
         {
-            dataitem(Item; Item)
-            {
-                column(Name; Description) { }
-                trigger OnAfterGetRecord()
-                begin
-
-                end;
-            }
             column(CustomerName; TempCustomer.Name)
             {
 
@@ -23,6 +15,11 @@ report 50129 "Top Customers"
 
             //will be summed in the report
             column(MoneySpent; WebshopOrder.Price)
+            {
+
+            }
+
+            column(ItemsBought; WebshopUtils.JoinText(WebshopUtils.GetItemsBughtByCustomer(TempCustomer."No.")))
             {
 
             }
@@ -55,4 +52,7 @@ report 50129 "Top Customers"
     }
     var
         TempCustomer: Record Customer;
+        TempItem: Record Item;
+
+        WebshopUtils: Codeunit WebshopUtilities;
 }

@@ -59,5 +59,46 @@ codeunit 50126 WebshopUtilities
         WebshopOrderHeaderRecord.Modify();
     end;
 
+    procedure GetItemsBughtByCustomer(
+        CustomerNo: Code[20]
+    ) ItemsBought: array[999999] of Text //max size of an array in bc
+    var
+        TempItem: Record Item;
+        TempWebshopOrderLine: Record "Webshop Order Line";
+        TempWebshopOrderHeader: Record "Webshop Order Header table";
+        ArrayCount: Integer;
+    begin
+        ArrayCount := 0;
+        TempWebshopOrderHeader.SetFilter(
+            "BC Customer ID", CustomerNo
+        );
+        TempWebshopOrderHeader.FindFirst();
+        repeat
+
+            TempWebshopOrderLine.SetRange(
+                "Webshop Order ID", TempWebshopOrderHeader."Webshop Order ID"
+            );
+            TempWebshopOrderLine.FindFirst();
+            repeat
+                TempWebshopOrderLine.CalcFields(Description);
+                ItemsBought[ArrayCount] := TempWebshopOrderLine.Description;
+                ArrayCount += 1;
+            until TempWebshopOrderLine.Next() = 0;
+        until TempWebshopOrderHeader.Next() = 0;
+    end;
+
+    procedure JoinText(
+        TextArray: array[999999] of Text
+    ) JoinedText: Text
+    var
+        ArrayCount: Integer;
+    begin
+        ArrayCount := 0;
+        while TextArray[ArrayCount] <> '' do begin
+            JoinedText += ', ' + TextArray[ArrayCount];
+            JoinedText := JoinedText.TrimEnd(', ');
+        end;
+    end;
+
 }
 

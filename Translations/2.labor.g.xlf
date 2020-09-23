@@ -113,6 +113,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Webshop Order Line Subpage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 143269716 - Action 173512215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel file</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - Action Export Excel file - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Webshop ID</source>
           <note from="Developer" annotates="general" priority="2"></note>

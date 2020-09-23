@@ -4,7 +4,7 @@ report 50129 "Top Webshop Customers"
     RDLCLayout = 'TopCustomers.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = Word;
+    DefaultLayout = RDLC;
     dataset
     {
         dataitem(WebshopOrder; "Webshop Order Header table")
@@ -30,11 +30,17 @@ report 50129 "Top Webshop Customers"
                 TempCustomer.Get(WebshopOrder."BC Customer ID");
             end;
 
+            trigger OnPostDataItem()
+            begin
 
+            end;
         }
+
     }
+
     requestpage
     {
+
         layout
         {
             area(content)
@@ -44,14 +50,58 @@ report 50129 "Top Webshop Customers"
                 }
             }
         }
+
         actions
         {
             area(processing)
             {
+                action("Export Excel file")
+                {
+                    Caption = 'Export Excel file';
+                    Promoted = true;
+                    PromotedCategory = Report;
+                    ApplicationArea = All;
+                    trigger OnAction()
+                    var
+                        TempExcelBuffer: Record "Excel Buffer" temporary;
+                    begin
+                        ExcelOutputRequested := true;
+                    end;
+                }
+
             }
         }
     }
+
+
+    trigger OnInitReport()
+    begin
+        SetUpExcelBufferHEader();
+    end;
+
+    trigger OnPostReport()
+    begin
+        TempExcelBuf.WriteAllToCurrentSheet(TempExcelBufSheet);
+        TempExcelBuf.SetFriendlyFilename('Top Webshop Customers');
+        TempExcelBuf.OpenExcel();
+    end;
+
+    /// <summary>
+    /// Sets up basic column header names for the buffer
+    /// </summary>
+    local procedure SetUpExcelBufferHEader()
+    begin
+        TempExcelBuf.EnterCell(TempExcelBuf, 1, 1, 'Customer name', false, false, false);
+        TempExcelBuf.EnterCell(TempExcelBuf, 1, 2, 'Customer name', false, false, false);
+        TempExcelBuf.EnterCell(TempExcelBuf, 1, 3, 'Customer name', false, false, false);
+    end;
+
     var
         TempCustomer: Record Customer;
         WebshopUtils: Codeunit WebshopUtilities;
+        LineCount: Integer;
+        TempExcelBuf: Record "Excel Buffer" temporary;
+        TempExcelBufSheet: Record "Excel Buffer" temporary;
+        ExcelOutputRequested: Boolean;
+
 }

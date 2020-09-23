@@ -82,7 +82,7 @@ report 50129 "Top Webshop Customers"
     trigger OnPostReport()
     begin
         TempExcelBuf.WriteAllToCurrentSheet(TempExcelBufSheet);
-        TempExcelBuf.SetFriendlyFilename('Top Webshop Customers');
+        TempExcelBuf.SetFriendlyFilename('Top Webshop Customers.xlsx');
         TempExcelBuf.OpenExcel();
     end;
 
@@ -91,9 +91,9 @@ report 50129 "Top Webshop Customers"
     /// </summary>
     local procedure SetUpExcelBufferHEader()
     begin
-        TempExcelBuf.EnterCell(TempExcelBuf, 1, 1, 'Customer name', false, false, false);
-        TempExcelBuf.EnterCell(TempExcelBuf, 1, 2, 'Customer name', false, false, false);
-        TempExcelBuf.EnterCell(TempExcelBuf, 1, 3, 'Customer name', false, false, false);
+        TempExcelBufSheet.EnterCell(TempExcelBuf, 1, 1, 'Customer name', false, false, false);
+        TempExcelBufSheet.EnterCell(TempExcelBuf, 1, 2, 'Customer name', false, false, false);
+        TempExcelBufSheet.EnterCell(TempExcelBuf, 1, 3, 'Customer name', false, false, false);
     end;
 
     var

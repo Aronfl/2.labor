@@ -5,7 +5,7 @@ report 50131 "Top Webshop Items"
     RDLCLayout = 'Layouts/TopItems.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = RDLC;
+    DefaultLayout = Word;
     dataset
     {
         dataitem(Item; Item)

@@ -19,6 +19,8 @@ report 50131 "Top Webshop Items"
             {
             }
 
+            // új column a pénznemnek
+
             column(DescriptionLabel; DescriptionLabel) { }
 
             column(ValueSoldLabel; ValueSoldLabel) { }

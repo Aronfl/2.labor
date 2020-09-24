@@ -1,6 +1,25 @@
-1.) pénznem hiányzik, ezres elválasztó
+1.) pénznem hiányzik, ezres elválasztó 
+    a, User default pénzneme, kihúzva a Card-ból (??) 
+    b, Word-ön belül labellel megoldva
+    c, Report fájlban ki kell húzni azt is
+    d, ezres elválasztó formázás
+
 2.) cégadatok, fejadatok, summa
-3.) layout cicoma (like top 10 stock report)
+    a, Globanban használjuk már valahol, azt is lablbe kell húzni
+    b, kell fejlécbe
+        - saját cég neve
+        - miről szól a report 2-3 szóban
+        - készítés dátuma
+        - oldalszám
+    c, chekkolni a sokoldalas tankönyv szerinti erendezést --> 242.oldal
+    d, summához sorösszegzéshez mi kell?
+        i, csak itembe kell összegző eladási summasor
+        ii, customerösnél milyen summa sor kell?
+    
+3.) layout cicoma (like top 10 stock report)  -- Sunny
+        a, kell hozzá higy a report fájlokban megjelenjenek columnek a hiányzó adatok, lsd 2.) pont
+        b, legyen szép :)
+
 4.) power bi integration
 
 feladat:

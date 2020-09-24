@@ -133,6 +133,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 143269716 - NamedType 2035604559" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - NamedType CustomerNameLabel</note>
+        </trans-unit>
+        <trans-unit id="Report 143269716 - NamedType 2032590998" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Money spent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - NamedType MoneySpentLabel</note>
+        </trans-unit>
+        <trans-unit id="Report 143269716 - NamedType 552487893" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items Bought</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - NamedType ItemsBoughtLabel</note>
+        </trans-unit>
         <trans-unit id="Report 2478033955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Top Webshop Items</source>
           <note from="Developer" annotates="general" priority="2"></note>

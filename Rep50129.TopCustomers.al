@@ -13,14 +13,24 @@ report 50129 "Top Webshop Customers"
             {
 
             }
-
+            column(CustomerNameLabel; CustomerNameLabel)
+            { }
             //will be summed in the report
             column(MoneySpent; WebshopOrder.Price)
             {
 
             }
 
+            column(MoneySpentLabel; MoneySpentLabel)
+            {
+
+            }
+
             column(ItemsBought; TempItemsBoughtText)
+            {
+
+            }
+            column(ItemsBoughtLabel; ItemsBoughtLabel)
             {
 
             }
@@ -65,5 +75,7 @@ report 50129 "Top Webshop Customers"
         TempItemsBoughtText: Text;
         TempCustomer: Record Customer;
         WebshopUtils: Codeunit WebshopUtilities;
-
+        CustomerNameLabel: Label 'Customer name';
+        MoneySpentLabel: Label 'Money spent';
+        ItemsBoughtLabel: Label 'Items Bought';
 }

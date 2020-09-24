@@ -183,6 +183,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Action Export Excel file - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 143269716 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Top Webshop Customers</source>
+          <target>Legnépszerűbb webshop ügyfelek</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Top Webshop Items</source>
+          <target>Legnépszerűbb webshop cikkek</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Property Caption</note>
+        </trans-unit>
       </group>
     </body>
   </file>

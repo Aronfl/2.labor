@@ -1,0 +1,23 @@
+1.) pénznem hiányzik, ezres elválasztó
+2.) cégadatok, fejadatok, summa
+3.) layout cicoma (like top 10 stock report)
+4.) power bi integration
+
+feladat:
+    mit tanulunk benne?
+        vállalatirányítási rendszerek felhasználása/működése
+        üzleti folyamatok megismerése
+        MS business central, navision
+        ERP fejlesztés
+            (C/)AL nyelv
+            Dynamics NAV, BC,
+            SQL, relációs adatbázisok
+            Azure DevOps
+                Git, CiCd, scripting
+            VScode, dynamics nav dev env, VS, rdlc
+
+    konkrét feladat:
+        egyedi reportok,
+        online számla modul új verziójának (3.0) fejlesztésében részvétel,
+        ERP rendszerek integrációja más rendszerekkel
+        onlineszámla, 

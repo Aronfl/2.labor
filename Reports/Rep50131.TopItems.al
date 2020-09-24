@@ -1,8 +1,8 @@
 report 50131 "Top Webshop Items"
 {
     Caption = 'Top Webshop Items';
-    WordLayout = 'TopItems.docx';
-    RDLCLayout = 'TopItems.rdlc';
+    WordLayout = 'Layouts/TopItems.docx';
+    RDLCLayout = 'Layouts/TopItems.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = RDLC;

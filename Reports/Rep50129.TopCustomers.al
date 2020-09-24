@@ -1,7 +1,7 @@
 report 50129 "Top Webshop Customers"
 {
     Caption = 'Top Webshop Customers';
-    RDLCLayout = 'TopCustomers.rdlc';
+    RDLCLayout = 'Layouts/TopCustomers.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = RDLC;

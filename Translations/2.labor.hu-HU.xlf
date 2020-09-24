@@ -1,8 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="hu-HU" original="2.labor">
     <body>
       <group id="body">
+        <trans-unit id="Table 2006841990 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target>Megjegyzés</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 3212207969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ValueSold</source>
+          <target>Eladott érték</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field ValueSold - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2430087453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Webshop Order Header</source>
           <target>Webáruház rendelés adatok</target>
@@ -135,6 +147,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Webshop Order Line Subpage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 143269716 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Top Webshop Customers</source>
+          <target>Legnépszerűbb webshop ügyfelek</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Top Webshop Items</source>
+          <target>Legnépszerűbb webshop cikkek</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Control 3800291108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to download a happy little excel gift?</source>
+          <target>Szeretne letölteni egy boldog kis Excel ajándékot?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Control ExcelOutputRequested - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Control 1099173430 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>How many rows you wish for, master?</source>
+          <target>Hány sort kíván, mester?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Control ExcelMaxRowCount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Action 173512215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel file</source>
+          <target>Excel fájlok exportálása</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Action Export Excel file - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Webshop ID</source>
           <target>Webshop azonosító</target>
@@ -164,36 +206,6 @@
           <target>kiszállított</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum OrderStatusEnum - EnumValue shipped - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2430087453 - NamedType 2715140805" maxwidth="99" size-unit="char" translate="no" xml:space="preserve">
-          <source>Webshop ID cannot be negative number</source>
-          <target>A megadott érték nem lehet negatív szám!</target>
-          <note from="Developer" annotates="general" priority="2">Foo</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - NamedType errorMessageNegativeNumber</note>
-        </trans-unit>
-        <trans-unit id="Report 2478033955 - Control 3800291108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Do you want to download a happy little excel gift?</source>
-          <target>Szeretne letölteni egy boldog kis Excel ajándékot?</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Control ExcelOutputRequested - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 2478033955 - Action 173512215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export Excel file</source>
-          <target>Excel fájlok exportálása</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Action Export Excel file - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 143269716 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Top Webshop Customers</source>
-          <target>Legnépszerűbb webshop ügyfelek</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 2478033955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Top Webshop Items</source>
-          <target>Legnépszerűbb webshop cikkek</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Property Caption</note>
         </trans-unit>
       </group>
     </body>

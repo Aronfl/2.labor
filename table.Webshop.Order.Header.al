@@ -18,7 +18,7 @@ table 50100 "Webshop Order Header table"
             trigger OnValidate()
             begin
                 if WebshopUserId < 0 then begin
-                    Message('Webshop ID cannot be negative number');
+                    Message(errorMessageNegativeNumber);
                     WebshopUserId := 0;
                 end;
             end;
@@ -66,7 +66,10 @@ table 50100 "Webshop Order Header table"
             Clustered = true;
         }
     }
+    var
+    errorMessageNegativeNumber : Label 'Webshop ID cannot be negative number', Comment='Foo', MaxLength=99, Locked=true;
 }
+
 enum 50110 OrderStatusEnum
 {
     Extensible = true;

@@ -48,6 +48,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - Field Price - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2430087453 - NamedType 2715140805" maxwidth="99" size-unit="char" translate="no" xml:space="preserve">
+          <source>Webshop ID cannot be negative number</source>
+          <note from="Developer" annotates="general" priority="2">Foo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - NamedType errorMessageNegativeNumber</note>
+        </trans-unit>
         <trans-unit id="Table 4013126656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Webshop Order Line</source>
           <note from="Developer" annotates="general" priority="2"></note>

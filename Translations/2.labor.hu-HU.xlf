@@ -165,6 +165,24 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum OrderStatusEnum - EnumValue shipped - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2430087453 - NamedType 2715140805" maxwidth="99" size-unit="char" translate="no" xml:space="preserve">
+          <source>Webshop ID cannot be negative number</source>
+          <target>A megadott érték nem lehet negatív szám!</target>
+          <note from="Developer" annotates="general" priority="2">Foo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Header table - NamedType errorMessageNegativeNumber</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Control 3800291108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to download a happy little excel gift?</source>
+          <target>Szeretne letölteni egy boldog kis Excel ajándékot?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Control ExcelOutputRequested - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Action 173512215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel file</source>
+          <target>Excel fájlok exportálása</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Action Export Excel file - Property Caption</note>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -67,7 +67,6 @@ report 50129 "Top Webshop Customers"
             area(processing)
             {
 
-
             }
         }
     }

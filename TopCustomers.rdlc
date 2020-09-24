@@ -10,37 +10,6 @@
       <rd:DataSourceID>71df12a0-d424-43ef-9a0d-4bc8628b9993</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="CustomerName">
-          <DataField>CustomerName</DataField>
-        </Field>
-        <Field Name="CustomerNameLabel">
-          <DataField>CustomerNameLabel</DataField>
-        </Field>
-        <Field Name="MoneySpent">
-          <DataField>MoneySpent</DataField>
-        </Field>
-        <Field Name="MoneySpentFormat">
-          <DataField>MoneySpentFormat</DataField>
-        </Field>
-        <Field Name="MoneySpentLabel">
-          <DataField>MoneySpentLabel</DataField>
-        </Field>
-        <Field Name="ItemsBought">
-          <DataField>ItemsBought</DataField>
-        </Field>
-        <Field Name="ItemsBoughtLabel">
-          <DataField>ItemsBoughtLabel</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -310,12 +279,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -355,4 +318,35 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="CustomerName">
+          <DataField>CustomerName</DataField>
+        </Field>
+        <Field Name="CustomerNameLabel">
+          <DataField>CustomerNameLabel</DataField>
+        </Field>
+        <Field Name="MoneySpent">
+          <DataField>MoneySpent</DataField>
+        </Field>
+        <Field Name="MoneySpentFormat">
+          <DataField>MoneySpentFormat</DataField>
+        </Field>
+        <Field Name="MoneySpentLabel">
+          <DataField>MoneySpentLabel</DataField>
+        </Field>
+        <Field Name="ItemsBought">
+          <DataField>ItemsBought</DataField>
+        </Field>
+        <Field Name="ItemsBoughtLabel">
+          <DataField>ItemsBoughtLabel</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

@@ -1,6 +1,6 @@
 report 50131 "Top Webshop Items"
 {
-
+    Caption = 'Top Webshop Items';
     WordLayout = 'TopItems.docx';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;

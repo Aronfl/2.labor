@@ -13,13 +13,17 @@ report 50131 "Top Webshop Items"
 
             column(Description; Description)
             {
-
             }
 
             column(ValueSold; TempValueSold)
             {
-
             }
+
+            column(DescriptionLabel; DescriptionLabel) { }
+
+            column(ValueSoldLabel; ValueSoldLabel) { }
+
+
             trigger OnAfterGetRecord()
             begin
                 TempValueSold := WebshopUtils.GetTotalSalesForItem(Item."No.");
@@ -30,9 +34,7 @@ report 50131 "Top Webshop Items"
                     TempExcelRecord.Insert();
                 end;
             end;
-
         }
-
     }
 
     requestpage
@@ -73,8 +75,6 @@ report 50131 "Top Webshop Items"
                         ExcelOutputRequested := true;
                     end;
                 }
-
-
             }
         }
     }
@@ -107,11 +107,9 @@ report 50131 "Top Webshop Items"
 
     local procedure SetUpExcelBufferHEader()
     begin
-        TempExcelBuf.AddColumn('Item Descrition', false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
-        TempExcelBuf.AddColumn('Total Sales', false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn(DescriptionLabel, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn(ValueSoldLabel, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
     end;
-
-
 
     var
 
@@ -122,7 +120,8 @@ report 50131 "Top Webshop Items"
         ExcelMaxRowCount: Integer;
         TempValueSold: Decimal;
         TempExcelRecord: Record ExcelItem temporary;
-
+        ValueSoldLabel: Label 'Value Sold';
+        DescriptionLabel: Label 'Item Description';
 }
 
 

@@ -37,7 +37,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Item Description</Value>
+                                  <Value>=Fields!DescriptionLabel.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -67,7 +67,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Total value sold</Value>
+                                  <Value>=Fields!ValueSoldLabel.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -191,7 +191,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Height>0.69792in</Height>
-            <Width>6.92709in</Width>
+            <Width>6.92708in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -258,6 +258,12 @@ End Function
         </Field>
         <Field Name="ValueSoldFormat">
           <DataField>ValueSoldFormat</DataField>
+        </Field>
+        <Field Name="DescriptionLabel">
+          <DataField>DescriptionLabel</DataField>
+        </Field>
+        <Field Name="ValueSoldLabel">
+          <DataField>ValueSoldLabel</DataField>
         </Field>
       </Fields>
       <Query>

@@ -3,6 +3,16 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="2.labor">
     <body>
       <group id="body">
+        <trans-unit id="Table 2006841990 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 3212207969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ValueSold</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field ValueSold - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2430087453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Webshop Order Header</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -118,10 +128,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Webshop Order Line Subpage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 143269716 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Top Webshop Customers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Customers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Top Webshop Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2478033955 - Control 3800291108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to download a happy little excel gift?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Control ExcelOutputRequested - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - Control 1099173430 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>How many rows you wish for, master?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - Control ExcelMaxRowCount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2478033955 - Action 173512215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export Excel file</source>

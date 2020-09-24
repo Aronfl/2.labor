@@ -2,9 +2,10 @@ report 50131 "Top Webshop Items"
 {
     Caption = 'Top Webshop Items';
     WordLayout = 'TopItems.docx';
+    RDLCLayout = 'TopItems.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = Word;
+    DefaultLayout = RDLC;
     dataset
     {
         dataitem(Item; Item)
@@ -22,9 +23,12 @@ report 50131 "Top Webshop Items"
             trigger OnAfterGetRecord()
             begin
                 TempValueSold := WebshopUtils.GetTotalSalesForItem(Item."No.");
-                TempExcelBuf.EnterCell(TempExcelBuf, LineCount, 1, Description, false, false, false);
-                TempExcelBuf.EnterCell(TempExcelBuf, LineCount, 2, TempValueSold, false, false, false);
-                LineCount += 1;
+                if (TempValueSold <> 0) then begin
+                    TempExcelRecord.Init();
+                    TempExcelRecord.Description := Description;
+                    TempExcelRecord.ValueSold := TempValueSold;
+                    TempExcelRecord.Insert();
+                end;
             end;
 
         }
@@ -42,6 +46,11 @@ report 50131 "Top Webshop Items"
                     field(ExcelOutputRequested; ExcelOutputRequested)
                     {
                         Caption = 'Do you want to download a happy little excel gift?';
+                    }
+
+                    field(ExcelMaxRowCount; ExcelMaxRowCount)
+                    {
+                        Caption = 'How many rows you wish for, master?';
                     }
                 }
             }
@@ -77,7 +86,16 @@ report 50131 "Top Webshop Items"
 
     trigger OnPostReport()
     begin
+        TempExcelRecord.SetCurrentKey(ValueSold);
+        TempExcelRecord.SetAscending(ValueSold, false);
         if (ExcelOutputRequested) then begin
+            if (TempExcelRecord.FindSet()) then
+                repeat
+                    TempExcelBuf.EnterCell(TempExcelBuf, LineCount, 1, TempExcelRecord.Description, false, false, false);
+                    TempExcelBuf.EnterCell(TempExcelBuf, LineCount, 2, TempExcelRecord.ValueSold, false, false, false);
+                    LineCount += 1;
+                until (TempExcelRecord.Next() = 0) or (LineCount = ExcelMaxRowCount + 2);
+
             TempExcelBuf.CreateNewBook('Top Webshop Items');
             TempExcelBuf.SetFriendlyFilename('Top Webshop Items');
             TempExcelBuf.WriteSheet('Top Webshop Items', CompanyName(), UserId());
@@ -101,6 +119,32 @@ report 50131 "Top Webshop Items"
         LineCount: Integer;
         TempExcelBuf: Record "Excel Buffer" temporary;
         ExcelOutputRequested: Boolean;
+        ExcelMaxRowCount: Integer;
         TempValueSold: Decimal;
+        TempExcelRecord: Record ExcelItem temporary;
 
+}
+
+
+/// <summary> 
+/// Table ExcelItem (ID 50130), only for temporary use within Top Items reports
+/// </summary>
+table 50130 ExcelItem
+{
+
+    fields
+    {
+        field(1; Description; Text[100])
+        { }
+
+        field(2; ValueSold; Decimal)
+        { }
+    }
+    keys
+    {
+        key(PK; Description, ValueSold)
+        {
+            Clustered = true;
+        }
+    }
 }

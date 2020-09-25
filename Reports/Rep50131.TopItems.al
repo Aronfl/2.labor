@@ -23,9 +23,12 @@ report 50131 "Top Webshop Items"
 
             column(ValueSoldLabel; ValueSoldLabel) { }
 
+            column(Currency; CurrencySymbol) { }
+
+
             // TODO
 
-            // új column a pénznemnek
+            // új column a pénznemnek - done
 
             // új column a cégnévhez (CRONUS)
 
@@ -36,6 +39,8 @@ report 50131 "Top Webshop Items"
             trigger OnAfterGetRecord()
             begin
                 TempValueSold := WebshopUtils.GetTotalSalesForItem(Item."No.");
+                GLSetup.get();
+                CurrencySymbol := GLSetup.GetCurrencySymbol();
                 if (TempValueSold <> 0) then begin
                     TempExcelRecord.Init();
                     TempExcelRecord.Description := Description;
@@ -131,6 +136,9 @@ report 50131 "Top Webshop Items"
         TempExcelRecord: Record ExcelItem temporary;
         ValueSoldLabel: Label 'Value Sold';
         DescriptionLabel: Label 'Item Description';
+        GLSetup: Record "General Ledger Setup";
+        CurrencySymbol: Text[10];
+        Currency: Record Currency;
 }
 
 

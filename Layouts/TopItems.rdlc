@@ -265,6 +265,12 @@ End Function
         <Field Name="ValueSoldLabel">
           <DataField>ValueSoldLabel</DataField>
         </Field>
+        <Field Name="COMPANYNAME">
+          <DataField>COMPANYNAME</DataField>
+        </Field>
+        <Field Name="CaptionForHeader">
+          <DataField>CaptionForHeader</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

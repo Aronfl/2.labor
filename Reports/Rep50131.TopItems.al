@@ -139,11 +139,10 @@ report 50131 "Top Webshop Items"
         TempExcelRecord: Record ExcelItem temporary;
         ValueSoldLabel: Label 'Value Sold';
         DescriptionLabel: Label 'Item Description';
-
         GLSetup: Record "General Ledger Setup";
         CurrencySymbol: Text[10];
         Currency: Record Currency;
-        CaptionForHeader: Label 'Top 10 sold Webshop Items by total sales value';
+        CaptionForHeader: Label 'Top 10 sold Webshop Items';
 
 }
 

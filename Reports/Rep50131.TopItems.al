@@ -10,34 +10,14 @@ report 50131 "Top Webshop Items"
     {
         dataitem(Item; Item)
         {
-
-            column(Description; Description)
-            {
-            }
-
-            column(ValueSold; TempValueSold)
-            {
-            }
-
+            column(Description; Description) { }
+            column(ValueSold; TempValueSold) { }
             column(DescriptionLabel; DescriptionLabel) { }
-
             column(ValueSoldLabel; ValueSoldLabel) { }
             column(CompanyName; CompanyName()) { }
             column(CaptionForHeader; CaptionForHeader) { }
-
             column(Currency; CurrencySymbol) { }
             column(DateString; DateString) { }
-
-
-            // TODO
-
-            // új column a pénznemnek - done
-
-            // új column a cégnévhez (CRONUS)
-
-            // új column a dátumhoz - nyelvi beállítás szerint!
-
-            // ennek a reportnak a Captionjét át lehet vinni Word-be?
 
             trigger OnAfterGetRecord()
             begin
@@ -50,6 +30,9 @@ report 50131 "Top Webshop Items"
                 end else begin
                     CurrReport.Skip();
                 end;
+                // TODO
+                // sorba rendezni a TempExcelRecordban ValueSold alapján csökkenő sorrendbe
+                // megtartjuk az első 10 dv-ot, többit eldobjuk
             end;
         }
     }

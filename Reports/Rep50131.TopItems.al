@@ -23,6 +23,7 @@ report 50131 "Top Webshop Items"
 
             column(ValueSoldLabel; ValueSoldLabel) { }
             column(COMPANYNAME; COMPANYNAME) { }
+            column(CaptionForHeader; CaptionForHeader) { }
 
             // TODO
 
@@ -132,6 +133,7 @@ report 50131 "Top Webshop Items"
         TempExcelRecord: Record ExcelItem temporary;
         ValueSoldLabel: Label 'Value Sold';
         DescriptionLabel: Label 'Item Description';
+        CaptionForHeader: Label 'Top 10 sold Webshop Items by total sales value';
 
 }
 

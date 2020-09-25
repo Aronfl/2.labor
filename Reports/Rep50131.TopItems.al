@@ -99,14 +99,10 @@ report 50131 "Top Webshop Items"
         SetUpExcelBufferHEader();
         GLSetup.get();
         CurrencySymbol := GLSetup.GetCurrencySymbol();
-        if (Language.get(GlobalLanguage())) then begin
-            if ((Language.Code = 'HUN') or (Language.Code = 'HU')) then begin
-                DateString := Format(Today(), 0, '<Year> <Month Text> <Day>')
-            end else begin
-                DateString := Format(Today(), 0, '<Month Text> <Day> <Year>')
-            end;
+        if (GlobalLanguage() = 1038) then begin //HUN
+            DateString := Format(Today(), 0, '<Year> <Month Text> <Day>')
         end else begin
-            DateString := Format(Today(), 0, 'universal: <Year> <Month Text> <Day>')
+            DateString := Format(Today(), 0, '<Month Text> <Day> <Year>')
         end;
     end;
 

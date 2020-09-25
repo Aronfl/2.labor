@@ -265,14 +265,17 @@ End Function
         <Field Name="ValueSoldLabel">
           <DataField>ValueSoldLabel</DataField>
         </Field>
-        <Field Name="COMPANYNAME">
-          <DataField>COMPANYNAME</DataField>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
         </Field>
         <Field Name="CaptionForHeader">
           <DataField>CaptionForHeader</DataField>
         </Field>
         <Field Name="Currency">
           <DataField>Currency</DataField>
+        </Field>
+        <Field Name="DateString">
+          <DataField>DateString</DataField>
         </Field>
       </Fields>
       <Query>

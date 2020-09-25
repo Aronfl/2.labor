@@ -209,7 +209,7 @@
         </trans-unit>
         <trans-unit id="Report 2478033955 - NamedType 237548374" size-unit="char" translate="yes" xml:space="preserve">
           <source>Top 10 sold Webshop Items</source>
-          <target>A 10 legtöbbet eladott webshop cikk</target>
+          <target>Top 10 eladott áru</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType CaptionForHeader</note>
         </trans-unit>

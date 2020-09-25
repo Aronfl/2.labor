@@ -265,6 +265,9 @@ End Function
         <Field Name="ValueSoldLabel">
           <DataField>ValueSoldLabel</DataField>
         </Field>
+        <Field Name="COMPANYNAME">
+          <DataField>COMPANYNAME</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

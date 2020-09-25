@@ -274,6 +274,9 @@ End Function
         <Field Name="Currency">
           <DataField>Currency</DataField>
         </Field>
+        <Field Name="DateString">
+          <DataField>DateString</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

@@ -26,6 +26,7 @@ report 50131 "Top Webshop Items"
             column(CaptionForHeader; CaptionForHeader) { }
 
             column(Currency; CurrencySymbol) { }
+            column(DateString; DateString) { }
 
 
             // TODO

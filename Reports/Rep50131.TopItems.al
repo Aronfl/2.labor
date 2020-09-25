@@ -22,7 +22,7 @@ report 50131 "Top Webshop Items"
             column(DescriptionLabel; DescriptionLabel) { }
 
             column(ValueSoldLabel; ValueSoldLabel) { }
-            column(COMPANYNAME; COMPANYNAME) { }
+            column(CompanyName; CompanyName()) { }
             column(CaptionForHeader; CaptionForHeader) { }
 
             column(Currency; CurrencySymbol) { }

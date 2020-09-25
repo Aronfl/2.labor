@@ -134,7 +134,7 @@ report 50131 "Top Webshop Items"
         TempExcelRecord: Record ExcelItem temporary;
         ValueSoldLabel: Label 'Value Sold';
         DescriptionLabel: Label 'Item Description';
-        CaptionForHeader: Label 'Top 10 sold Webshop Items by total sales value';
+        CaptionForHeader: Label 'Top 10 sold Webshop Items';
 
 }
 

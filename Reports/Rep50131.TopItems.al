@@ -19,12 +19,19 @@ report 50131 "Top Webshop Items"
             {
             }
 
-            // új column a pénznemnek
-
             column(DescriptionLabel; DescriptionLabel) { }
 
             column(ValueSoldLabel; ValueSoldLabel) { }
 
+            // TODO
+
+            // új column a pénznemnek
+
+            // új column a cégnévhez (CRONUS)
+
+            // új column a dátumhoz - nyelvi beállítás szerint!
+
+            // ennek a reportnak a Captionjét át lehet vinni Word-be?
 
             trigger OnAfterGetRecord()
             begin

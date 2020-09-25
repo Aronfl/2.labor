@@ -133,7 +133,6 @@ report 50131 "Top Webshop Items"
     begin
         TempExcelBuf.AddColumn(DescriptionLabel, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
         TempExcelBuf.AddColumn(ValueSoldLabel, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
-        TempExcelBuf.AddColumn(CaptionForHeader, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
     end;
 
     var

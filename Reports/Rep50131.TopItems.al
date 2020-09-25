@@ -41,8 +41,6 @@ report 50131 "Top Webshop Items"
             trigger OnAfterGetRecord()
             begin
                 TempValueSold := WebshopUtils.GetTotalSalesForItem(Item."No.");
-                GLSetup.get();
-                CurrencySymbol := GLSetup.GetCurrencySymbol();
                 if (TempValueSold <> 0) then begin
                     TempExcelRecord.Init();
                     TempExcelRecord.Description := Description;
@@ -98,6 +96,17 @@ report 50131 "Top Webshop Items"
     begin
         LineCount := 2;
         SetUpExcelBufferHEader();
+        GLSetup.get();
+        CurrencySymbol := GLSetup.GetCurrencySymbol();
+        if (Language.get(GlobalLanguage())) then begin
+            if ((Language.Code = 'HUN') or (Language.Code = 'HU')) then begin
+                DateString := Format(Today(), 0, '<Year> <Month Text> <Day>')
+            end else begin
+                DateString := Format(Today(), 0, '<Month Text> <Day> <Year>')
+            end;
+        end else begin
+            DateString := Format(Today(), 0, 'universal: <Year> <Month Text> <Day>')
+        end;
     end;
 
     trigger OnPostReport()
@@ -143,6 +152,8 @@ report 50131 "Top Webshop Items"
         CurrencySymbol: Text[10];
         Currency: Record Currency;
         CaptionForHeader: Label 'Top 10 sold Webshop Items';
+        DateString: Text;
+        Language: Record Language;
 
 }
 

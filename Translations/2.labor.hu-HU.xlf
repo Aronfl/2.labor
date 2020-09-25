@@ -207,6 +207,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType DescriptionLabel</note>
         </trans-unit>
+        <trans-unit id="Report 2478033955 - NamedType 237548374" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Top 10 sold Webshop Items</source>
+          <target>A 10 legtöbbet eladott webshop cikk</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType CaptionForHeader</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Webshop ID</source>
           <target>Webshop azonosító</target>

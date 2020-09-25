@@ -47,6 +47,8 @@ report 50131 "Top Webshop Items"
                     TempExcelRecord.Description := Description;
                     TempExcelRecord.ValueSold := TempValueSold;
                     TempExcelRecord.Insert();
+                end else begin
+                    CurrReport.Skip();
                 end;
             end;
         }

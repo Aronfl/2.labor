@@ -18,7 +18,7 @@ report 50131 "Top Webshop Items"
             column(CaptionForHeader; CaptionForHeader) { }
             column(Currency; CurrencySymbol) { }
             column(DateString; DateString) { }
-            column(TotalPrice; SumPrice) { }
+            column(TotalPrice; SumValue) { }
             column(CurrReportPageNo; CurrReport.PageNo()) { }
             column(ReportId; Format(This, 20)) { }
 
@@ -29,6 +29,7 @@ report 50131 "Top Webshop Items"
                     TempExcelRecord.Init();
                     TempExcelRecord.Description := Description;
                     TempExcelRecord.ValueSold := TempValueSold;
+                    SumValue += TempValueSold;
                     TempExcelRecord.Insert();
                 end else begin
                     CurrReport.Skip();
@@ -157,8 +158,8 @@ report 50131 "Top Webshop Items"
         Language: Record Language;
         This: Report "Top Webshop Items";
         IsSimplePage: Boolean;
-        SumPrice: Decimal;
-        
+        SumValue: Decimal;
+
 }
 
 

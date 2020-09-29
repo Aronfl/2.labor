@@ -19,18 +19,8 @@ report 50131 "Top Webshop Items"
             column(Currency; CurrencySymbol) { }
             column(DateString; DateString) { }
             column(TotalPrice; SumPrice) { }
+            column(CurrReportPageNo; CurrReport.PageNo()) { }
             column(ReportId; Format(This, 20)) { }
-
-
-            // TODO
-
-            // új column a pénznemnek - done
-
-            // új column a cégnévhez (CRONUS)
-
-            // új column a dátumhoz - nyelvi beállítás szerint!
-
-            // ennek a reportnak a Captionjét át lehet vinni Word-be?
 
             trigger OnAfterGetRecord()
             begin
@@ -43,9 +33,15 @@ report 50131 "Top Webshop Items"
                 end else begin
                     CurrReport.Skip();
                 end;
-                // TODO
-                // sorba rendezni a TempExcelRecordban ValueSold alapján csökkenő sorrendbe
-                // megtartjuk az első 10 dv-ot, többit eldobjuk
+                /* TODO
+
+                1.) sorba rendezni a TempExcelRecordban ValueSold alapján csökkenő sorrendbe
+
+                2.) megtartjuk az első 10 db-ot, többit eldobjuk
+
+                3.) összérték
+
+                */
             end;
         }
     }
@@ -162,7 +158,7 @@ report 50131 "Top Webshop Items"
         This: Report "Top Webshop Items";
         IsSimplePage: Boolean;
         SumPrice: Decimal;
-
+        
 }
 
 

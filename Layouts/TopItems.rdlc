@@ -283,6 +283,9 @@ End Function
         <Field Name="TotalPriceFormat">
           <DataField>TotalPriceFormat</DataField>
         </Field>
+        <Field Name="CurrReportPageNo">
+          <DataField>CurrReportPageNo</DataField>
+        </Field>
         <Field Name="ReportId">
           <DataField>ReportId</DataField>
         </Field>

@@ -28,6 +28,8 @@ report 50131 "Top Webshop Items"
             column(Currency; CurrencySymbol) { }
             column(DateString; DateString) { }
 
+            column(ReportId; Format(This, 20)) { }
+
 
             // TODO
 
@@ -100,9 +102,9 @@ report 50131 "Top Webshop Items"
         GLSetup.get();
         CurrencySymbol := GLSetup.GetCurrencySymbol();
         if (GlobalLanguage() = 1038) then begin //HUN
-            DateString := Format(Today(), 0, '<Year> <Month Text> <Day>')
+            DateString := Format(Today(), 0, '<Year4>. <Month Text> <Day>.')
         end else begin
-            DateString := Format(Today(), 0, '<Month Text> <Day> <Year>')
+            DateString := Format(Today(), 0, '<Month Text> <Day>. <Year4>.')
         end;
     end;
 
@@ -134,6 +136,7 @@ report 50131 "Top Webshop Items"
         TempExcelBuf.AddColumn(CaptionForHeader, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
     end;
 
+
     var
 
         WebshopUtils: Codeunit WebshopUtilities;
@@ -151,6 +154,7 @@ report 50131 "Top Webshop Items"
         CaptionForHeader: Label 'Top 10 sold Webshop Items';
         DateString: Text;
         Language: Record Language;
+        This: Report "Top Webshop Items";
 
 }
 

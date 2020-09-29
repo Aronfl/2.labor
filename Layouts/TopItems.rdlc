@@ -277,6 +277,9 @@ End Function
         <Field Name="DateString">
           <DataField>DateString</DataField>
         </Field>
+        <Field Name="ReportId">
+          <DataField>ReportId</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

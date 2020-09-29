@@ -18,7 +18,7 @@ report 50131 "Top Webshop Items"
             column(CaptionForHeader; CaptionForHeader) { }
             column(Currency; CurrencySymbol) { }
             column(DateString; DateString) { }
-
+            column(TotalPrice; SumPrice) { }
             column(ReportId; Format(This, 20)) { }
 
 
@@ -131,6 +131,16 @@ report 50131 "Top Webshop Items"
         TempExcelBuf.AddColumn(ValueSoldLabel, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
     end;
 
+    local procedure GetTotalPrice(): Decimal //do something?
+    var
+        TempExcelRecord: Record "ExcelItem";
+    begin
+        if IsSimplePage then begin
+            TempExcelRecord.SetRange("ValueSold");
+            TempExcelRecord.CalcSums("ValueSold");
+            exit(TempExcelRecord."ValueSold");
+        end
+    end;
 
     var
 
@@ -150,6 +160,8 @@ report 50131 "Top Webshop Items"
         DateString: Text;
         Language: Record Language;
         This: Report "Top Webshop Items";
+        IsSimplePage: Boolean;
+        SumPrice: Decimal;
 
 }
 

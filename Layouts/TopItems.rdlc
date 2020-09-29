@@ -277,6 +277,12 @@ End Function
         <Field Name="DateString">
           <DataField>DateString</DataField>
         </Field>
+        <Field Name="TotalPrice">
+          <DataField>TotalPrice</DataField>
+        </Field>
+        <Field Name="TotalPriceFormat">
+          <DataField>TotalPriceFormat</DataField>
+        </Field>
         <Field Name="ReportId">
           <DataField>ReportId</DataField>
         </Field>

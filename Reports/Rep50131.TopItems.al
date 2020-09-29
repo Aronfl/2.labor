@@ -21,6 +21,7 @@ report 50131 "Top Webshop Items"
             column(TotalPrice; SumPrice) { }
             column(CurrReportPageNo; CurrReport.PageNo()) { }
             column(ReportId; Format(This, 20)) { }
+            column(Sumline; Sumline) { }
 
             trigger OnAfterGetRecord()
             begin
@@ -158,7 +159,8 @@ report 50131 "Top Webshop Items"
         This: Report "Top Webshop Items";
         IsSimplePage: Boolean;
         SumPrice: Decimal;
-        
+        Sumline: Label 'Total value of best selled items:';
+
 }
 
 

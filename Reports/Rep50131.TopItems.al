@@ -10,21 +10,12 @@ report 50131 "Top Webshop Items"
     {
         dataitem(Item; Item)
         {
-
-            column(Description; Description)
-            {
-            }
-
-            column(ValueSold; TempValueSold)
-            {
-            }
-
+            column(Description; Description) { }
+            column(ValueSold; TempValueSold) { }
             column(DescriptionLabel; DescriptionLabel) { }
-
             column(ValueSoldLabel; ValueSoldLabel) { }
             column(CompanyName; CompanyName()) { }
             column(CaptionForHeader; CaptionForHeader) { }
-
             column(Currency; CurrencySymbol) { }
             column(DateString; DateString) { }
 
@@ -49,7 +40,12 @@ report 50131 "Top Webshop Items"
                     TempExcelRecord.Description := Description;
                     TempExcelRecord.ValueSold := TempValueSold;
                     TempExcelRecord.Insert();
+                end else begin
+                    CurrReport.Skip();
                 end;
+                // TODO
+                // sorba rendezni a TempExcelRecordban ValueSold alapján csökkenő sorrendbe
+                // megtartjuk az első 10 dv-ot, többit eldobjuk
             end;
         }
     }
@@ -133,7 +129,6 @@ report 50131 "Top Webshop Items"
     begin
         TempExcelBuf.AddColumn(DescriptionLabel, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
         TempExcelBuf.AddColumn(ValueSoldLabel, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
-        TempExcelBuf.AddColumn(CaptionForHeader, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
     end;
 
 

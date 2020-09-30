@@ -22,6 +22,7 @@ report 50131 "Top Webshop Items"
             column(CurrReportPageNo; CurrReport.PageNo()) { }
             column(ReportId; Format(This, 20)) { }
             column(Sumline; Sumline) { }
+            column(ReportIdLabel; ReportIdLabel) { }
 
             trigger OnAfterGetRecord()
             begin
@@ -30,7 +31,7 @@ report 50131 "Top Webshop Items"
                     TempExcelRecord.Init();
                     TempExcelRecord.Description := Description;
                     TempExcelRecord.ValueSold := TempValueSold;
-                    SumValue += TempValueSold;
+                    SumValue += TempValueSold;  // Ez itt nem jó, mert az összeset összeadja!! Nekünk csak a TOP 10 kell!!!!
                     TempExcelRecord.Insert();
                 end else begin
                     CurrReport.Skip();
@@ -161,6 +162,7 @@ report 50131 "Top Webshop Items"
         IsSimplePage: Boolean;
         SumValue: Decimal;
         Sumline: Label 'Total value of best selled items:';
+        ReportIdLabel: Label 'Report Id: ';
 }
 
 

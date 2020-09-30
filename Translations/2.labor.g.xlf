@@ -188,6 +188,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType Sumline</note>
         </trans-unit>
+        <trans-unit id="Report 2478033955 - NamedType 2335275919" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Id: </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType ReportIdLabel</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Webshop ID</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -691,9 +691,6 @@ V5Q80n7/+9//9Kc/7d8xMS4JSgLX6DT0CVkoIrm1DSQ2vJV0pERWYP8Dd//pn/5p+fLl7rc+ozls80tx
         <Field Name="Sumline">
           <DataField>Sumline</DataField>
         </Field>
-        <Field Name="ReportIdLabel">
-          <DataField>ReportIdLabel</DataField>
-        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

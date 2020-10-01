@@ -6,15 +6,19 @@ report 50131 "Top Webshop Items"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = Word;
+
     dataset
     {
-        dataitem(Item; Item)
+
+        dataitem(Item; ExcelItem)
         {
+            DataItemTableView = sorting(ValueSold) order(descending);
+            UseTemporary = true;
             column(Description; Description) { }
-            column(ValueSold; TempValueSold) { }
+            column(ValueSold; ValueSold) { }
             column(DescriptionLabel; DescriptionLabel) { }
             column(ValueSoldLabel; ValueSoldLabel) { }
-            column(CompanyName; CompanyName()) { }
+            column(CompanyName; CompanyName) { }
             column(CaptionForHeader; CaptionForHeader) { }
             column(Currency; CurrencySymbol) { }
             column(DateString; DateString) { }
@@ -25,22 +29,17 @@ report 50131 "Top Webshop Items"
 
             trigger OnAfterGetRecord()
             begin
-                TempValueSold := WebshopUtils.GetTotalSalesForItem(Item."No.");
-                if (TempValueSold <> 0) then begin
-                    TempExcelRecord.Init();
-                    TempExcelRecord.Description := Description;
-                    TempExcelRecord.ValueSold := TempValueSold;
-                    TempExcelRecord.Insert();
-                end else begin
-                    CurrReport.Skip();
-                end;
+                if (ReportLineCount >= ExcelMaxRowCount) then
+                    CurrReport.Quit();
+
+                ReportLineCount += 1;
                 /* TODO
 
-                1.) sorba rendezni a TempExcelRecordban ValueSold alapján csökkenő sorrendbe
+                1.) sorba rendezni a TempExcelRecordban ValueSold alapján csökkenő sorrendbe - done
 
-                2.) megtartjuk az első 10 db-ot, többit eldobjuk
+                2.) megtartjuk az első 10 db-ot, többit eldobjuk - done
 
-                3.) összérték
+                3.) összérték - pls test me
 
                 */
             end;
@@ -89,8 +88,10 @@ report 50131 "Top Webshop Items"
         }
     }
     trigger OnInitReport()
+    var
+        ItemRecord: Record Item;
     begin
-        LineCount := 2;
+        ExcelLineCount := 2;
         SetUpExcelBufferHEader();
         GLSetup.get();
         CurrencySymbol := GLSetup.GetCurrencySymbol();
@@ -99,6 +100,27 @@ report 50131 "Top Webshop Items"
         end else begin
             DateString := Format(Today(), 0, '<Month Text> <Day>. <Year4>.')
         end;
+
+        ItemRecord.SetCurrentKey("No.");
+        repeat
+            TempValueSold := WebshopUtils.GetTotalSalesForItem(ItemRecord."No.");
+            if (TempValueSold <> 0) then begin
+                TempExcelRecord.Init();
+                TempExcelRecord.CaptionForHeader := CaptionForHeader;
+                TempExcelRecord.CompanyName := CompanyName();
+                TempExcelRecord.CurrencySymbol := CurrencySymbol;
+                TempExcelRecord.DateString := DateString;
+                TempExcelRecord.Description := ItemRecord.Description;
+                TempExcelRecord.DescriptionLabel := DescriptionLabel;
+                TempExcelRecord.SumLine := Sumline;
+                TempExcelRecord.ValueSold := TempValueSold;
+                TempExcelRecord.Insert();
+            end else begin
+                CurrReport.Skip();
+            end;
+        until (ItemRecord.Next() = 0);
+
+
     end;
 
     trigger OnPostReport()
@@ -108,10 +130,10 @@ report 50131 "Top Webshop Items"
         if (ExcelOutputRequested) then begin
             if (TempExcelRecord.FindSet()) then
                 repeat
-                    TempExcelBuf.EnterCell(TempExcelBuf, LineCount, 1, TempExcelRecord.Description, false, false, false);
-                    TempExcelBuf.EnterCell(TempExcelBuf, LineCount, 2, TempExcelRecord.ValueSold, false, false, false);
-                    LineCount += 1;
-                until (TempExcelRecord.Next() = 0) or (LineCount = ExcelMaxRowCount + 2);
+                    TempExcelBuf.EnterCell(TempExcelBuf, ExcelLineCount, 1, TempExcelRecord.Description, false, false, false);
+                    TempExcelBuf.EnterCell(TempExcelBuf, ExcelLineCount, 2, TempExcelRecord.ValueSold, false, false, false);
+                    ExcelLineCount += 1;
+                until (TempExcelRecord.Next() = 0) or (ExcelLineCount = ExcelMaxRowCount + 2);
 
             TempExcelBuf.CreateNewBook('Top Webshop Items');
             TempExcelBuf.SetFriendlyFilename('Top Webshop Items');
@@ -128,21 +150,11 @@ report 50131 "Top Webshop Items"
         TempExcelBuf.AddColumn(ValueSoldLabel, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
     end;
 
-    local procedure GetTotalPrice(): Decimal //do something?
-    var
-        TempExcelRecord: Record "ExcelItem";
-    begin
-        if IsSimplePage then begin
-            TempExcelRecord.SetRange("ValueSold");
-            TempExcelRecord.CalcSums("ValueSold");
-            exit(TempExcelRecord."ValueSold");
-        end
-    end;
 
     var
 
         WebshopUtils: Codeunit WebshopUtilities;
-        LineCount: Integer;
+        ExcelLineCount: Integer;
         TempExcelBuf: Record "Excel Buffer" temporary;
         ExcelOutputRequested: Boolean;
         ExcelMaxRowCount: Integer;
@@ -152,14 +164,12 @@ report 50131 "Top Webshop Items"
         DescriptionLabel: Label 'Item Description';
         GLSetup: Record "General Ledger Setup";
         CurrencySymbol: Text[10];
-        Currency: Record Currency;
         CaptionForHeader: Label 'Top 10 sold Webshop Items';
         DateString: Text;
-        Language: Record Language;
         This: Report "Top Webshop Items";
-        IsSimplePage: Boolean;
-        SumPrice: Decimal;
         Sumline: Label 'Total value of best selled items:';
+        ReportLineCount: Integer;
+
 
 }
 
@@ -177,6 +187,35 @@ table 50130 ExcelItem
 
         field(2; ValueSold; Decimal)
         { }
+
+        field(3; DescriptionLabel; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(4; CompanyName; Text[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(5; CaptionForHeader; Text[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(6; CurrencySymbol; Text[10])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(7; DateString; Text[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(8; SumPrice; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(9; SumLine; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
     keys
     {

@@ -90,6 +90,11 @@ report 50131 "Top Webshop Items"
             }
         }
     }
+    trigger OnInitReport()
+    begin
+        ExcelMaxRowCount := 10;
+    end;
+
     trigger OnPreReport()
     var
         ItemRecord: Record Item;
@@ -112,7 +117,6 @@ report 50131 "Top Webshop Items"
         repeat
             TempValueSold := WebshopUtils.GetTotalSalesForItem(ItemRecord."No.");
             if (TempValueSold <> 0) then begin
-                Message('Item: ' + format(ItemRecord.Description));
                 TempExcelRecord.Init();
                 TempExcelRecord.CaptionForHeader := CaptionForHeader;
                 TempExcelRecord.CompanyName := CompanyName();

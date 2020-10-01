@@ -5,7 +5,7 @@ report 50131 "Top Webshop Items"
     RDLCLayout = 'Layouts/TopItems.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = Word;
+    DefaultLayout = RDLC;
 
     dataset
     {
@@ -132,9 +132,8 @@ report 50131 "Top Webshop Items"
                 PleaseWork.Insert();
                 //calculating total sales value
                 TotalValue += TempValueSold;
-            end else begin
-                CurrReport.Skip();
-            end;
+            end
+
         until (ItemRecord.Next() = 0);
 
 

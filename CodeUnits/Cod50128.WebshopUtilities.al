@@ -126,13 +126,16 @@ codeunit 50126 WebshopUtilities
     var
         CurrentItem: Record Item;
         CurrentWebshopLine: Record "Webshop Order Line";
+        CurrentWebshopOrder: Record "Webshop Order Header table";
     begin
         TotalSales := 0;
         CurrentWebshopLine.SetFilter("Item No.", ItemId);
         if (CurrentWebshopLine.FindFirst()) then begin
             repeat
-                CurrentWebshopLine.CalcPrice();
-                TotalSales += CurrentWebshopLine.Price;
+                if (CurrentWebshopOrder.Get(CurrentWebshopLine."Webshop Order ID")) then begin
+                    CurrentWebshopLine.CalcPrice();
+                    TotalSales += CurrentWebshopLine.Price;
+                end;
             until CurrentWebshopLine.Next() = 0;
         end;
     end;

@@ -42,7 +42,7 @@ report 50131 "Top Webshop Items"
 
                 2.) megtartjuk az első 10 db-ot, többit eldobjuk - done
 
-                3.) összérték - pls test me
+                3.) összérték - done
 
                 */
             end;

@@ -15,6 +15,42 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field ValueSold - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 3093731364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DescriptionLabel</source>
+          <target>[Leírás]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field DescriptionLabel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 552006252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CompanyName</source>
+          <target>[Vállalat neve]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field CompanyName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 237548374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CaptionForHeader</source>
+          <target>[Fejléc felirat]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field CaptionForHeader - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 3309994395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CurrencySymbol</source>
+          <target>[Pénznem Jel]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field CurrencySymbol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 1184285187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DateString</source>
+          <target>Dátum]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field DateString - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 427536343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SumLine</source>
+          <target>[Összeg jegyzet]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field SumLine - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2430087453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Webshop Order Header</source>
           <target>Webáruház rendelés adatok</target>
@@ -212,6 +248,18 @@
           <target>A 10 legnagyobb értékben eladott áru</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType CaptionForHeader</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - NamedType 2335275919" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Id</source>
+          <target>[Riport azonosító:]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType ReportIdLabel</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - NamedType 2724505335" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total value of best selled items:</source>
+          <target>A legkeresettebb termékek összértéke:</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType Sumline</note>
         </trans-unit>
         <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Webshop ID</source>

@@ -218,6 +218,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType CaptionForHeader</note>
         </trans-unit>
+        <trans-unit id="Report 2478033955 - NamedType 2335275919" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType ReportIdLabel</note>
+        </trans-unit>
         <trans-unit id="Report 2478033955 - NamedType 2724505335" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total value of best selled items:</source>
           <note from="Developer" annotates="general" priority="2"></note>

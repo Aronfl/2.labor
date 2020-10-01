@@ -5,15 +5,16 @@ report 50131 "Top Webshop Items"
     RDLCLayout = 'Layouts/TopItems.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = Word;
+    DefaultLayout = RDLC;
 
     dataset
     {
 
-        dataitem(Item; ExcelItem)
+        dataitem(PleaseWork; ExcelItem)
         {
             DataItemTableView = sorting(ValueSold) order(descending);
             UseTemporary = true;
+
             column(Description; Description) { }
             column(ValueSold; ValueSold) { }
             column(DescriptionLabel; DescriptionLabel) { }
@@ -26,9 +27,11 @@ report 50131 "Top Webshop Items"
             column(CurrReportPageNo; CurrReport.PageNo()) { }
             column(ReportId; Format(This, 20)) { }
             column(Sumline; Sumline) { }
+            column(ReportIdLabel; ReportIdLabel) { }
 
             trigger OnAfterGetRecord()
             begin
+                // Message('Item: ' + format(PleaseWork.ValueSold) + ', ' + PleaseWork.Description);
                 if (ReportLineCount >= ExcelMaxRowCount) then
                     CurrReport.Quit();
 
@@ -87,7 +90,7 @@ report 50131 "Top Webshop Items"
             }
         }
     }
-    trigger OnInitReport()
+    trigger OnPreReport()
     var
         ItemRecord: Record Item;
     begin
@@ -102,23 +105,36 @@ report 50131 "Top Webshop Items"
         end;
 
         ItemRecord.SetCurrentKey("No.");
+        ItemRecord.FindFirst();
+        TempExcelRecord.Reset();
+        TempExcelRecord.DeleteAll();
         repeat
             TempValueSold := WebshopUtils.GetTotalSalesForItem(ItemRecord."No.");
             if (TempValueSold <> 0) then begin
+                Message('Item: ' + format(ItemRecord.Description));
                 TempExcelRecord.Init();
                 TempExcelRecord.CaptionForHeader := CaptionForHeader;
                 TempExcelRecord.CompanyName := CompanyName();
                 TempExcelRecord.CurrencySymbol := CurrencySymbol;
                 TempExcelRecord.DateString := DateString;
+                if (ItemRecord.Description <> '') then
+                    TempExcelRecord.Description := ItemRecord.Description
+                else
+                    TempExcelRecord.Description := ItemRecord."Description 2";
+
                 TempExcelRecord.Description := ItemRecord.Description;
                 TempExcelRecord.DescriptionLabel := DescriptionLabel;
                 TempExcelRecord.SumLine := Sumline;
                 TempExcelRecord.ValueSold := TempValueSold;
                 TempExcelRecord.Insert();
+                PleaseWork := TempExcelRecord;
+                PleaseWork.Insert();
             end else begin
                 CurrReport.Skip();
             end;
         until (ItemRecord.Next() = 0);
+
+
 
 
     end;
@@ -165,6 +181,7 @@ report 50131 "Top Webshop Items"
         GLSetup: Record "General Ledger Setup";
         CurrencySymbol: Text[10];
         CaptionForHeader: Label 'Top 10 sold Webshop Items';
+        ReportIdLabel: Label 'Report Id';
         DateString: Text;
         This: Report "Top Webshop Items";
         Sumline: Label 'Total value of best selled items:';

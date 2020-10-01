@@ -5,7 +5,7 @@ report 50131 "Top Webshop Items"
     RDLCLayout = 'Layouts/TopItems.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = RDLC;
+    DefaultLayout = Word;
 
     dataset
     {
@@ -23,7 +23,7 @@ report 50131 "Top Webshop Items"
             column(CaptionForHeader; CaptionForHeader) { }
             column(Currency; CurrencySymbol) { }
             column(DateString; DateString) { }
-            column(TotalPrice; SumPrice) { }
+            column(TotalPrice; TotalValue) { }
             column(CurrReportPageNo; CurrReport.PageNo()) { }
             column(ReportId; Format(This, 20)) { }
             column(Sumline; Sumline) { }
@@ -108,6 +108,7 @@ report 50131 "Top Webshop Items"
         ItemRecord.FindFirst();
         TempExcelRecord.Reset();
         TempExcelRecord.DeleteAll();
+        TempValueSold := 0;
         repeat
             TempValueSold := WebshopUtils.GetTotalSalesForItem(ItemRecord."No.");
             if (TempValueSold <> 0) then begin
@@ -129,6 +130,8 @@ report 50131 "Top Webshop Items"
                 TempExcelRecord.Insert();
                 PleaseWork := TempExcelRecord;
                 PleaseWork.Insert();
+                //calculating total sales value
+                TotalValue += TempValueSold;
             end else begin
                 CurrReport.Skip();
             end;
@@ -186,6 +189,7 @@ report 50131 "Top Webshop Items"
         This: Report "Top Webshop Items";
         Sumline: Label 'Total value of best selled items:';
         ReportLineCount: Integer;
+        TotalValue: Decimal;
 
 
 }
@@ -225,10 +229,7 @@ table 50130 ExcelItem
         {
             DataClassification = ToBeClassified;
         }
-        field(8; SumPrice; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
+
         field(9; SumLine; Text[100])
         {
             DataClassification = ToBeClassified;

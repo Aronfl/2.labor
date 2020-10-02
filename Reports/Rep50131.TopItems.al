@@ -5,7 +5,7 @@ report 50131 "Top Webshop Items"
     RDLCLayout = 'Layouts/TopItems.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = Word;
+    DefaultLayout = RDLC;
 
     dataset
     {
@@ -33,7 +33,7 @@ report 50131 "Top Webshop Items"
             begin
                 // Message('Item: ' + format(PleaseWork.ValueSold) + ', ' + PleaseWork.Description);
                 if (ReportLineCount >= ExcelMaxRowCount) then
-                    CurrReport.Quit();
+                    CurrReport.Break();
 
                 ReportLineCount += 1;
                 /* TODO

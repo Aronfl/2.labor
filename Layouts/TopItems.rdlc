@@ -235,17 +235,7 @@
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Details">
-                    <Filters>
-                      <Filter>
-                        <FilterExpression>=Fields!ValueSold.Value</FilterExpression>
-                        <Operator>TopN</Operator>
-                        <FilterValues>
-                          <FilterValue DataType="Integer">10</FilterValue>
-                        </FilterValues>
-                      </Filter>
-                    </Filters>
-                  </Group>
+                  <Group Name="Details" />
                   <SortExpressions>
                     <SortExpression>
                       <Value>=Fields!ValueSold.Value</Value>
@@ -461,10 +451,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TotalPrice.Value, "DataSet_Result")</Value>
+                    <Value>=Sum(Fields!ValueSold.Value)</Value>
                     <Style>
                       <FontSize>14pt</FontSize>
                       <FontWeight>Bold</FontWeight>
+                      <Format>#,0.00;(#,0.00)</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -473,9 +464,9 @@
             </Paragraphs>
             <rd:DefaultName>TotalPrice</rd:DefaultName>
             <Top>3.01333in</Top>
-            <Left>6.03541in</Left>
+            <Left>5.30208in</Left>
             <Height>0.25in</Height>
-            <Width>1.15556in</Width>
+            <Width>1.88889in</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>

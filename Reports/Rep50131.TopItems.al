@@ -186,7 +186,7 @@ report 50131 "Top Webshop Items"
         DescriptionLabel: Label 'Item Description';
         GLSetup: Record "General Ledger Setup";
         CurrencySymbol: Text[10];
-        CaptionForHeader: Label 'Top 10 sold Webshop Items';
+        CaptionForHeader: Label 'Top sold Webshop Items';
         ReportIdLabel: Label 'Report Id';
         DateString: Text;
         This: Report "Top Webshop Items";

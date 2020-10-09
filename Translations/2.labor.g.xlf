@@ -13,6 +13,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field ValueSold - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 893802664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TempWarrantySold</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field TempWarrantySold - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2006841990 - Field 3093731364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DescriptionLabel</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -113,20 +118,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Base unit of measure - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 4013126656 - Field 4218887511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Price without warranty</source>
+        <trans-unit id="Table 4013126656 - Field 3635338911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Price without warranty - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Price - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4013126656 - Field 3985998922 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ext. warranty price</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field ext. warranty price - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 4013126656 - Field 3635338911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Price</source>
+        <trans-unit id="Table 4013126656 - Field 62651565 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price with warranty</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Price - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Price with warranty - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4013126656 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line No.</source>
@@ -243,10 +248,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType Sumline</note>
         </trans-unit>
-        <trans-unit id="Report 2478033955 - NamedType 1552343205" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Report 2478033955 - NamedType 181003062" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total Amount Of Warrianty: </source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType totalAmountOfWarrianty_Label</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType totalAmountOfWarranty_Label</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - NamedType 374366711" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType FullTotalPrice_Label</note>
         </trans-unit>
         <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Webshop ID</source>

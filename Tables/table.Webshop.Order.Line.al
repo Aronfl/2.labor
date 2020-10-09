@@ -50,9 +50,9 @@ table 50101 "Webshop Order Line"
             CalcFormula = lookup(Item."Base Unit of Measure" where("No." = field("Item No.")));
         }
 
-        field(5; "Price without warranty"; Decimal)
+        field(5; Price; Decimal)
         {
-            Caption = 'Price without warranty';
+            Caption = 'Price';
             Editable = false;
         }
         field(6; "ext. warranty price"; Decimal)
@@ -60,9 +60,9 @@ table 50101 "Webshop Order Line"
             Caption = 'ext. warranty price';
             Editable = false;
         }
-        field(7; Price; Decimal)
+        field(7; "Price with warranty"; Decimal)
         {
-            Caption = 'Price';
+            Caption = 'Price with warranty';
             Editable = false;
         }
         field(8; "Line No."; Integer)
@@ -163,8 +163,8 @@ table 50101 "Webshop Order Line"
         else begin
             "ext. warranty price" := 0;
         end;
-        "Price without warranty" := Quantity * "Unit Price";
-        Price := "Price without warranty" + "ext. warranty price";
+        Price := Quantity * "Unit Price";
+        "Price with warranty" := Price + "ext. warranty price";
 
     end;
 

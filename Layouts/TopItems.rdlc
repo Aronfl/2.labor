@@ -685,14 +685,23 @@ V5Q80n7/+9//9Kc/7d8xMS4JSgLX6DT0CVkoIrm1DSQ2vJV0pERWYP8Dd//pn/5p+fLl7rc+ozls80tx
         <Field Name="ReportIdLabel">
           <DataField>ReportIdLabel</DataField>
         </Field>
-        <Field Name="totalAmountOfWarrianty">
-          <DataField>totalAmountOfWarrianty</DataField>
+        <Field Name="totalAmountOfWarranty">
+          <DataField>totalAmountOfWarranty</DataField>
         </Field>
-        <Field Name="totalAmountOfWarriantyFormat">
-          <DataField>totalAmountOfWarriantyFormat</DataField>
+        <Field Name="totalAmountOfWarrantyFormat">
+          <DataField>totalAmountOfWarrantyFormat</DataField>
         </Field>
-        <Field Name="totalAmountOfWarrianty_Label">
-          <DataField>totalAmountOfWarrianty_Label</DataField>
+        <Field Name="totalAmountOfWarranty_Label">
+          <DataField>totalAmountOfWarranty_Label</DataField>
+        </Field>
+        <Field Name="FullTotalPrice">
+          <DataField>FullTotalPrice</DataField>
+        </Field>
+        <Field Name="FullTotalPriceFormat">
+          <DataField>FullTotalPriceFormat</DataField>
+        </Field>
+        <Field Name="FullTotalPrice_Label">
+          <DataField>FullTotalPrice_Label</DataField>
         </Field>
       </Fields>
       <Query>

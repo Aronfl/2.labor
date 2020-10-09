@@ -28,8 +28,10 @@ report 50131 "Top Webshop Items"
             column(ReportId; Format(This, 20)) { }
             column(Sumline; Sumline) { }
             column(ReportIdLabel; ReportIdLabel) { }
-            column(totalAmountOfWarrianty; totalAmountOfWarrianty) { }
-            column(totalAmountOfWarrianty_Label; totalAmountOfWarrianty_Label) { }
+            column(totalAmountOfWarranty; totalAmountOfWarranty) { }
+            column(totalAmountOfWarranty_Label; totalAmountOfWarranty_Label) { }
+            column(FullTotalPrice; FullTotalPrice) { }
+            column(FullTotalPrice_Label; FullTotalPrice_Label) { }
 
             trigger OnAfterGetRecord()
             begin
@@ -114,8 +116,11 @@ report 50131 "Top Webshop Items"
         TempExcelRecord.Reset();
         TempExcelRecord.DeleteAll();
         TempValueSold := 0;
+        TempWarrantySold := 0;
+        FullTotalPrice := 0;
         repeat
             TempValueSold := WebshopUtils.GetTotalSalesForItem(ItemRecord."No.");
+            TempWarrantySold := WebshopUtils.GetTotalWarrantyForItem(ItemRecord."No.");
             if (TempValueSold <> 0) then begin
                 TempExcelRecord.Init();
                 TempExcelRecord.CaptionForHeader := CaptionForHeader;
@@ -131,11 +136,14 @@ report 50131 "Top Webshop Items"
                 TempExcelRecord.DescriptionLabel := DescriptionLabel;
                 TempExcelRecord.SumLine := Sumline;
                 TempExcelRecord.ValueSold := TempValueSold;
+                TempExcelRecord.TempWarrantySold := TempWarrantySold;
                 TempExcelRecord.Insert();
                 PleaseWork := TempExcelRecord;
                 PleaseWork.Insert();
                 //calculating total sales value
                 TotalValue += TempValueSold;
+                totalAmountOfWarranty += TempWarrantySold;
+                FullTotalPrice := TotalValue + totalAmountOfWarranty;
                 ReportLineCount += 1;
             end
 
@@ -182,6 +190,7 @@ report 50131 "Top Webshop Items"
         ExcelOutputRequested: Boolean;
         ExcelMaxRowCount: Integer;
         TempValueSold: Decimal;
+        TempWarrantySold: Decimal;
         TempExcelRecord: Record ExcelItem temporary;
         ValueSoldLabel: Label 'Value Sold';
         DescriptionLabel: Label 'Item Description';
@@ -194,9 +203,10 @@ report 50131 "Top Webshop Items"
         Sumline: Label 'Total value of best selled items:';
         ReportLineCount: Integer;
         TotalValue: Decimal;
-        totalAmountOfWarrianty: Decimal; // ide töltsük az összes garanciára költött összeget
-        totalAmountOfWarrianty_Label: Label 'Total Amount Of Warrianty: ';
-
+        totalAmountOfWarranty: Decimal; // ide töltsük az összes garanciára költött összeget
+        totalAmountOfWarranty_Label: Label 'Total Amount Of Warrianty: ';
+        FullTotalPrice: Decimal;
+        FullTotalPrice_Label: Label 'Total:';
 
 }
 
@@ -215,6 +225,8 @@ table 50130 ExcelItem
         field(2; ValueSold; Decimal)
         { }
 
+        field(10; TempWarrantySold; Decimal)
+        { }
         field(3; DescriptionLabel; Text[100])
         {
             DataClassification = ToBeClassified;

@@ -140,5 +140,24 @@ codeunit 50126 WebshopUtilities
         end;
     end;
 
+    procedure GetTotalWarrantyForItem(
+            ItemId: Code[20]
+        ) TotalWarranty: Decimal
+    var
+        CurrentItem: Record Item;
+        CurrentWebshopLine: Record "Webshop Order Line";
+        CurrentWebshopOrder: Record "Webshop Order Header table";
+    begin
+        TotalWarranty := 0;
+        CurrentWebshopLine.SetFilter("Item No.", ItemId);
+        if (CurrentWebshopLine.FindFirst()) then begin
+            repeat
+                if (CurrentWebshopOrder.Get(CurrentWebshopLine."Webshop Order ID")) then begin
+                    CurrentWebshopLine.CalcPrice();
+                    TotalWarranty += CurrentWebshopLine."ext. warranty price";
+                end;
+            until CurrentWebshopLine.Next() = 0;
+        end;
+    end;
 }
 

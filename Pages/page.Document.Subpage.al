@@ -41,14 +41,14 @@ page 50125 "Webshop Order Line Subpage"
                 field("Unit Price"; "Unit Price")
                 {
                 }
-                field("Price without warranty"; "Price without warranty")
+                field(Price; Price)
                 {
                 }
                 field("ext. warranty price"; "ext. warranty price")
                 {
                     ApplicationArea = All;
                 }
-                field(Price; Price)
+                field("Price with warranty"; "Price with warranty")
                 {
                     ApplicationArea = All;
                 }

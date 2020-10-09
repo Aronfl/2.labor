@@ -87,7 +87,9 @@ table 50101 "Webshop Order Line"
         }
         field(11; "Reference for Date Calculation"; Date)
         {
-            Caption = 'Date of purchase';
+            InitValue = 20201115D;
+
+            Caption = 'Target shipping date';
             trigger OnValidate()
             var
 

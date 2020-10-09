@@ -178,8 +178,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4013126656 - Field 1635041871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Date of purchase</source>
-          <target>Vásárlás dátuma</target>
+          <source>Target shipping date</source>
+          <target>Előre megadott kiszállítás dátuma</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Reference for Date Calculation - Property Caption</note>
         </trans-unit>

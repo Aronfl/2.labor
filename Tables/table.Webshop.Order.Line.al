@@ -22,6 +22,7 @@ table 50101 "Webshop Order Line"
 
         field(2; "Quantity"; Decimal)
         {
+            InitValue = 1;
             Caption = 'Quantity';
             DataClassification = CustomerContent;
             trigger OnValidate()

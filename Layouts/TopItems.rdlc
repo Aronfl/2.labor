@@ -655,6 +655,15 @@ V5Q80n7/+9//9Kc/7d8xMS4JSgLX6DT0CVkoIrm1DSQ2vJV0pERWYP8Dd//pn/5p+fLl7rc+ozls80tx
         <Field Name="ValueSoldLabel">
           <DataField>ValueSoldLabel</DataField>
         </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="Quantity_Label">
+          <DataField>Quantity_Label</DataField>
+        </Field>
+        <Field Name="UnitCode">
+          <DataField>UnitCode</DataField>
+        </Field>
         <Field Name="CompanyName">
           <DataField>CompanyName</DataField>
         </Field>

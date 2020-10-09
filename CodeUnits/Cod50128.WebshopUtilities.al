@@ -159,5 +159,25 @@ codeunit 50126 WebshopUtilities
             until CurrentWebshopLine.Next() = 0;
         end;
     end;
+
+    procedure GetTotalQuatityForItem(
+                ItemId: Code[20]
+            ) TotalQuantity: Decimal
+    var
+        CurrentItem: Record Item;
+        CurrentWebshopLine: Record "Webshop Order Line";
+        CurrentWebshopOrder: Record "Webshop Order Header table";
+    begin
+        TotalQuantity := 0;
+        CurrentWebshopLine.SetFilter("Item No.", ItemId);
+        if (CurrentWebshopLine.FindFirst()) then begin
+            repeat
+                if (CurrentWebshopOrder.Get(CurrentWebshopLine."Webshop Order ID")) then begin
+                    CurrentWebshopLine.CalcPrice();
+                    TotalQuantity += CurrentWebshopLine.Quantity;
+                end;
+            until CurrentWebshopLine.Next() = 0;
+        end;
+    end;
 }
 

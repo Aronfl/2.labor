@@ -19,6 +19,9 @@ report 50131 "Top Webshop Items"
             column(ValueSold; ValueSold) { }
             column(DescriptionLabel; DescriptionLabel) { }
             column(ValueSoldLabel; ValueSoldLabel) { }
+            column(Quantity; Quantity) { }
+            column(Quantity_Label; Quantity_Label) { }
+            column("UnitCode"; "UnitCode") { }
             column(CompanyName; CompanyName) { }
             column(CaptionForHeader; CaptionForHeader) { }
             column(Currency; CurrencySymbol) { }
@@ -116,11 +119,13 @@ report 50131 "Top Webshop Items"
         TempExcelRecord.Reset();
         TempExcelRecord.DeleteAll();
         TempValueSold := 0;
+        TempQuantity := 0;
         TempWarrantySold := 0;
         FullTotalPrice := 0;
         repeat
             TempValueSold := WebshopUtils.GetTotalSalesForItem(ItemRecord."No.");
             TempWarrantySold := WebshopUtils.GetTotalWarrantyForItem(ItemRecord."No.");
+            TempQuantity := WebshopUtils.GetTotalQuatityForItem(ItemRecord."No.");
             if (TempValueSold <> 0) then begin
                 TempExcelRecord.Init();
                 TempExcelRecord.CaptionForHeader := CaptionForHeader;
@@ -133,9 +138,11 @@ report 50131 "Top Webshop Items"
                     TempExcelRecord.Description := ItemRecord."Description 2";
 
                 TempExcelRecord.Description := ItemRecord.Description;
+                TempExcelRecord."UnitCode" := Itemrecord."Base Unit of Measure";
                 TempExcelRecord.DescriptionLabel := DescriptionLabel;
                 TempExcelRecord.SumLine := Sumline;
                 TempExcelRecord.ValueSold := TempValueSold;
+                TempExcelRecord.Quantity := TempQuantity;
                 TempExcelRecord.TempWarrantySold := TempWarrantySold;
                 TempExcelRecord.Insert();
                 PleaseWork := TempExcelRecord;
@@ -190,6 +197,7 @@ report 50131 "Top Webshop Items"
         ExcelOutputRequested: Boolean;
         ExcelMaxRowCount: Integer;
         TempValueSold: Decimal;
+        TempQuantity: Integer;
         TempWarrantySold: Decimal;
         TempExcelRecord: Record ExcelItem temporary;
         ValueSoldLabel: Label 'Value Sold';
@@ -207,6 +215,8 @@ report 50131 "Top Webshop Items"
         totalAmountOfWarranty_Label: Label 'Total Amount Of Warrianty: ';
         FullTotalPrice: Decimal;
         FullTotalPrice_Label: Label 'Total:';
+        Quantity_Label: Label 'Quantity';
+        TempUnitCode: Code[10];
 
 }
 
@@ -222,6 +232,10 @@ table 50130 ExcelItem
         field(1; Description; Text[100])
         { }
 
+        field(11; Quantity; Integer) { }
+
+        field(12; "UnitCode"; Code[10])
+        { }
         field(2; ValueSold; Decimal)
         { }
 

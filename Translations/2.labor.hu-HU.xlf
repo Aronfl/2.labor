@@ -9,6 +9,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <target>Mennyiség</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2006841990 - Field 3379024013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UnitCode</source>
+          <target>Mértékegység</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field UnitCode - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2006841990 - Field 3212207969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ValueSold</source>
           <target>Eladott érték</target>
@@ -308,6 +320,12 @@
           <target>Végösszeg:</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType FullTotalPrice_Label</note>
+        </trans-unit>
+        <trans-unit id="Report 2478033955 - NamedType 1312383486" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <target>Mennyiség</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType Quantity_Label</note>
         </trans-unit>
         <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Webshop ID</source>

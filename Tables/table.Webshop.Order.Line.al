@@ -126,7 +126,7 @@ table 50101 "Webshop Order Line"
         }
     }
     var
-        extendedWarPrice: Decimal;
+
         Initvalue: Enum enumWarranty;
 
     /// <summary> 
@@ -153,9 +153,10 @@ table 50101 "Webshop Order Line"
     var
         EnumText: Text[5];
         EnumIndex: Integer;
+        extendedWarPrice: Decimal;
     begin
-        extendedWarPrice := 500;
         CalcFields("Unit Price");
+        extendedWarPrice := "Unit Price" * 0.15;
         EnumIndex := "enumWarranty".AsInteger();
         "enumWarranty".Names().Get(EnumIndex, EnumText);
 

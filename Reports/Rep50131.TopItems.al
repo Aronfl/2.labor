@@ -28,6 +28,8 @@ report 50131 "Top Webshop Items"
             column(ReportId; Format(This, 20)) { }
             column(Sumline; Sumline) { }
             column(ReportIdLabel; ReportIdLabel) { }
+            column(totalAmountOfWarrianty; totalAmountOfWarrianty) { }
+            column(totalAmountOfWarrianty_Label; totalAmountOfWarrianty_Label) { }
 
             trigger OnAfterGetRecord()
             begin
@@ -193,6 +195,8 @@ report 50131 "Top Webshop Items"
         Sumline: Label 'Total value of best selled items:';
         ReportLineCount: Integer;
         TotalValue: Decimal;
+        totalAmountOfWarrianty: Decimal; // ide töltsük az összes garanciára költött összeget
+        totalAmountOfWarrianty_Label: Label 'Total Amount Of Warrianty: ';
 
 
 }

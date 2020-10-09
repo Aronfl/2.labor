@@ -35,7 +35,7 @@ table 50101 "Webshop Order Line"
             Caption = 'Unit Price';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("Item"."Unit Price" where("No." = field("Item No.")));
+            CalcFormula = lookup("Item"."Unit Price" where("No." = field("Item No.")));
             trigger OnValidate()
             begin
 
@@ -47,34 +47,71 @@ table 50101 "Webshop Order Line"
         {
             Caption = 'Unit code';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item."Base Unit of Measure" where("No." = field("Item No.")));
+            CalcFormula = lookup(Item."Base Unit of Measure" where("No." = field("Item No.")));
         }
 
-        field(5; "Price"; Decimal)
+        field(5; "Price without warranty"; Decimal)
+        {
+            Caption = 'Price without warranty';
+            Editable = false;
+        }
+        field(6; "ext. warranty price"; Decimal)
+        {
+            Caption = 'ext. warranty price';
+            Editable = false;
+        }
+        field(7; Price; Decimal)
         {
             Caption = 'Price';
             Editable = false;
         }
-
-        field(6; "Line No."; Integer)
+        field(8; "Line No."; Integer)
         {
             Caption = 'Line No.';
             DataClassification = CustomerContent;
         }
 
 
-        field(7; "Webshop Order ID"; Integer)
+        field(9; "Webshop Order ID"; Integer)
         {
             Caption = 'Order No.';
             Editable = false;
             TableRelation = "Webshop Order Header table"."Webshop Order ID";
         }
 
-        field(8; Description; Text[100])
+        field(10; Description; Text[100])
         {
             Caption = 'Description';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item.Description where("No." = field("Item No.")));
+            CalcFormula = lookup(Item.Description where("No." = field("Item No.")));
+        }
+        field(11; "Reference for Date Calculation"; Date)
+        {
+            Caption = 'Date of purchase';
+            trigger OnValidate()
+            var
+
+            begin
+                CalculateNewDate();
+            end;
+        }
+
+        field(12; "enumWarranty"; Enum enumWarranty)
+        {
+            InitValue = "<1Y>";
+            Caption = 'Warranty';
+
+            trigger OnValidate()
+            begin
+                CalculateNewDate();
+                CalcPrice();
+            end;
+        }
+        field(13; "Date Result"; Date)
+        {
+            Caption = 'Expiration';
+            Editable = false;
+
         }
     }
 
@@ -86,23 +123,66 @@ table 50101 "Webshop Order Line"
 
         }
     }
+    var
+        extendedWarPrice: Decimal;
+        Initvalue: Enum enumWarranty;
+
+    /// <summary> 
+    /// Description for CalculateNewDate.
+    /// </summary>
+    local procedure CalculateNewDate()
+    var
+        DateFormulaToUse: DateFormula;
+        EnumText: Text[10];
+        EnumIndex: Integer;
+    begin
+        EnumIndex := "enumWarranty".AsInteger();
+        "enumWarranty".Names().Get(EnumIndex, EnumText);
+        if (System.Evaluate(DateFormulaToUse, EnumText)) then begin
+            "Date Result" := CalcDate(DateFormulaToUse, "Reference for Date Calculation");
+        end;
+
+    end;
 
     /// <summary> 
     /// Description for CalcPrice.
     /// </summary>
     procedure CalcPrice()
+    var
+        EnumText: Text[5];
+        EnumIndex: Integer;
     begin
+        extendedWarPrice := 500;
         CalcFields("Unit Price");
-        Price := Quantity * "Unit Price";
-        // Message(
-        //     'the calculated price is: ' + Format(Price) +
-        //     ', where quantity was: ' + Format(Quantity) +
-        //     ', and unit price was: ' + Format("Unit Price")
-        // );
+        EnumIndex := "enumWarranty".AsInteger();
+        "enumWarranty".Names().Get(EnumIndex, EnumText);
+
+        if (EnumText = '<5Y>') then begin
+            "ext. warranty price" := Quantity * extendedWarPrice;
+        end
+        else begin
+            "ext. warranty price" := 0;
+        end;
+        "Price without warranty" := Quantity * "Unit Price";
+        Price := "Price without warranty" + "ext. warranty price";
+
     end;
 
     trigger OnInsert()
     begin
         CalcPrice();
     end;
+}
+enum 50131 enumWarranty
+{
+
+    value(1; "<1Y>")
+    {
+        Caption = '1 Year';
+    }
+    value(2; "<5Y>")
+    {
+        Caption = '5 Year (extended)';
+    }
+
 }

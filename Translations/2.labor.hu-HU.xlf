@@ -41,7 +41,7 @@
         </trans-unit>
         <trans-unit id="Table 2006841990 - Field 1184285187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DateString</source>
-          <target>Dátum]</target>
+          <target>Dátum</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ExcelItem - Field DateString - Property Caption</note>
         </trans-unit>
@@ -135,6 +135,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Base unit of measure - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 4218887511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price without warranty</source>
+          <target>Garancia nélküli ár</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Price without warranty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 3985998922 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ext. warranty price</source>
+          <target>Kiterjesztett garancia ára</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field ext. warranty price - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4013126656 - Field 3635338911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Price</source>
           <target>Ár</target>
@@ -158,6 +170,24 @@
           <target>Megjegyzés</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 1635041871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date of purchase</source>
+          <target>Vásárlás dátuma</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Reference for Date Calculation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 2061991241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warranty</source>
+          <target>Garancia</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field enumWarranty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4013126656 - Field 94641519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiration</source>
+          <target>Garancia érvényessége</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Webshop Order Line - Field Date Result - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3837906084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Webshop Order List</source>
@@ -261,6 +291,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType Sumline</note>
         </trans-unit>
+        <trans-unit id="Report 2478033955 - NamedType 1552343205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Amount Of Warrianty: </source>
+          <target>Garanciális ügyintézésre költött összeg: </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Top Webshop Items - NamedType totalAmountOfWarrianty_Label</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2854597511 - Control 3765014060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Webshop ID</source>
           <target>Webshop azonosító</target>
@@ -290,6 +326,18 @@
           <target>kiszállított</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum OrderStatusEnum - EnumValue shipped - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2061991241 - EnumValue 528029030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>1 Year</source>
+          <target>1 év (alap)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum enumWarranty - EnumValue &lt;1Y> - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2061991241 - EnumValue 3770491394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>5 Year (extended)</source>
+          <target>5 év (kiterjesztett)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum enumWarranty - EnumValue &lt;5Y> - Property Caption</note>
         </trans-unit>
       </group>
     </body>

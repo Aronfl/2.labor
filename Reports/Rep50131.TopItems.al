@@ -5,7 +5,7 @@ report 50131 "Top Webshop Items"
     RDLCLayout = 'Layouts/TopItems.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultLayout = RDLC;
+    DefaultLayout = Word;
 
     dataset
     {
@@ -34,10 +34,7 @@ report 50131 "Top Webshop Items"
             trigger OnAfterGetRecord()
             begin
                 // Message('Item: ' + format(PleaseWork.ValueSold) + ', ' + PleaseWork.Description);
-                if (ReportLineCount >= ExcelMaxRowCount) then
-                    CurrReport.Break();
 
-                ReportLineCount += 1;
                 /* TODO
 
                 1.) sorba rendezni a TempExcelRecordban ValueSold alapján csökkenő sorrendbe - done
@@ -94,6 +91,7 @@ report 50131 "Top Webshop Items"
     }
     trigger OnInitReport()
     begin
+        // Default value of rows
         ExcelMaxRowCount := 10;
     end;
 
@@ -138,9 +136,10 @@ report 50131 "Top Webshop Items"
                 PleaseWork.Insert();
                 //calculating total sales value
                 TotalValue += TempValueSold;
+                ReportLineCount += 1;
             end
 
-        until (ItemRecord.Next() = 0);
+        until ((ItemRecord.Next() = 0) or (ReportLineCount >= ExcelMaxRowCount));
 
 
 
@@ -188,7 +187,7 @@ report 50131 "Top Webshop Items"
         DescriptionLabel: Label 'Item Description';
         GLSetup: Record "General Ledger Setup";
         CurrencySymbol: Text[10];
-        CaptionForHeader: Label 'Top 10 sold Webshop Items';
+        CaptionForHeader: Label 'Top sold Webshop Items';
         ReportIdLabel: Label 'Report Id';
         DateString: Text;
         This: Report "Top Webshop Items";

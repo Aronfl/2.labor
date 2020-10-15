@@ -6,7 +6,7 @@ report 50131 "Top Webshop Items"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = Word;
-
+    
     dataset
     {
 
@@ -226,7 +226,6 @@ report 50131 "Top Webshop Items"
 /// </summary>
 table 50130 ExcelItem
 {
-
     fields
     {
         field(1; Description; Text[100])

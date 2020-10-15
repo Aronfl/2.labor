@@ -88,9 +88,8 @@ table 50101 "Webshop Order Line"
         }
         field(11; "Reference for Date Calculation"; Date)
         {
-            InitValue = 20201115D;
-
             Caption = 'Target shipping date';
+
             trigger OnValidate()
             var
 
@@ -129,6 +128,7 @@ table 50101 "Webshop Order Line"
     var
 
         Initvalue: Enum enumWarranty;
+        webShopOrder: Record "Webshop Order Header table";
 
     /// <summary> 
     /// Description for CalculateNewDate.
@@ -184,6 +184,9 @@ table 50101 "Webshop Order Line"
     trigger OnInsert()
     begin
         CalcPrice();
+        //CalcFormula = lookup("Webshop Order Header table"."Order Date" where("Webshop Order ID" = field("Webshop Order ID")));
+        if webShopOrder.get("Webshop Order ID") then;
+        validate("Reference for Date Calculation", CalcDate('<1W>', webShopOrder."Order Date"));
     end;
 }
 enum 50131 enumWarranty

@@ -159,6 +159,15 @@ table 50101 "Webshop Order Line"
         CalcFields("Unit Price");
         extendedWarPrice := "Unit Price" * 0.15;
         EnumIndex := "enumWarranty".AsInteger();
+        /* Itt eltörik a report, ha a korábbi rendelésekhez nincs Warraty rendelve,
+           amit utólag nem lehet megtenni, mert a shipping date is hiányzik, meg a warraty hossza is
+           és mivel egymásból számolják, utólag nem lehet megadni.
+           TODO FIX ME :
+            - Mi van ha nincs dátum? Számolja az árat anélkül is!
+            - Mi van ha nincs warraty hossz? Számolja az árat anélkül is!
+            - Mi van ha nincs warraty ár? Készüljön el a report anélkül is (legyen ott nulla)
+        */
+
         "enumWarranty".Names().Get(EnumIndex, EnumText);
 
         if (EnumText = '<5Y>') then begin

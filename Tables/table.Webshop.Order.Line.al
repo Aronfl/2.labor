@@ -166,19 +166,26 @@ table 50101 "Webshop Order Line"
             - Mi van ha nincs dátum? Számolja az árat anélkül is!
             - Mi van ha nincs warraty hossz? Számolja az árat anélkül is!
             - Mi van ha nincs warraty ár? Készüljön el a report anélkül is (legyen ott nulla)
+            
+            megjegyzés: Elvileg problem solved. Gergő
         */
+        if "enumWarranty".Names().Get(EnumIndex, EnumText) then begin
+            "enumWarranty".Names().Get(EnumIndex, EnumText);
 
-        "enumWarranty".Names().Get(EnumIndex, EnumText);
+            if (EnumText = '<5Y>') then begin
+                "ext. warranty price" := Quantity * extendedWarPrice;
+            end
+            else begin
+                "ext. warranty price" := 0;
+            end;
+            Price := Quantity * "Unit Price";
+            "Price with warranty" := Price + "ext. warranty price";
 
-        if (EnumText = '<5Y>') then begin
-            "ext. warranty price" := Quantity * extendedWarPrice;
         end
         else begin
-            "ext. warranty price" := 0;
+            Price := Quantity * "Unit Price";
         end;
-        Price := Quantity * "Unit Price";
-        "Price with warranty" := Price + "ext. warranty price";
-
+        ;
     end;
 
     trigger OnInsert()
@@ -191,7 +198,7 @@ table 50101 "Webshop Order Line"
 }
 enum 50131 enumWarranty
 {
-
+    
     value(1; "<1Y>")
     {
         Caption = '1 Year';

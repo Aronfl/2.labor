@@ -100,7 +100,7 @@ table 50101 "Webshop Order Line"
 
                     currEnumName := GetEnumValueName(enumWarranty);
                     if currEnumName <> '' then begin
-                        Message('Enum hase value, calculating new date . (this just for test)'); //tesztüzi (*＾▽＾)／
+                        Message('Enum has value, calculating new date . (message only for test)'); //tesztüzi (*＾▽＾)／
                         CalculateNewDate();
                         CalcPrice();
                     end;
@@ -117,7 +117,7 @@ table 50101 "Webshop Order Line"
             begin
 
                 if "Target Shipping Date" <> 0D then begin
-                    Message('Target date hase value, calculating new date . (this just for test)'); //tesztüzi (*＾▽＾)／
+                    Message('Target date has value, calculating new date . (message only for test)'); //tesztüzi (*＾▽＾)／
                     CalculateNewDate();
                     CalcPrice();
                 end;
@@ -201,7 +201,7 @@ table 50101 "Webshop Order Line"
         if "Target Shipping Date" = 0D then begin
             "Date Result" := 0D;
 
-            Message('No Target Shipping date added. Please add.')
+            Message('No Target Shipping date added. (message only for test)') //tesztüzi (*＾▽＾)／
         end else begin
 
             if (System.Evaluate(DateFormulaToUse, EnumText)) then begin

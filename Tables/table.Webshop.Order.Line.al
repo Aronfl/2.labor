@@ -121,6 +121,7 @@ table 50101 "Webshop Order Line"
                     CalculateNewDate();
                     CalcPrice();
                 end;
+                CalcPrice();
             end;
         }
         field(13; "Date Result"; Date)
@@ -199,7 +200,7 @@ table 50101 "Webshop Order Line"
 
         if "Target Shipping Date" = 0D then begin
             "Date Result" := 0D;
-            
+
             Message('No Target Shipping date added. Please add.')
         end else begin
 

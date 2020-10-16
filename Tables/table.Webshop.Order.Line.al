@@ -86,7 +86,7 @@ table 50101 "Webshop Order Line"
             FieldClass = FlowField;
             CalcFormula = lookup(Item.Description where("No." = field("Item No.")));
         }
-        field(11; "Reference for Date Calculation"; Date)
+        field(11; "Target Shipping Date"; Date)
         {
             Caption = 'Target shipping date';
 
@@ -94,7 +94,17 @@ table 50101 "Webshop Order Line"
             var
 
             begin
-                CalculateNewDate();
+                if (currEnumName <> '') or (webShopOrderLine."Target Shipping Date" <> 0D) then begin
+
+                end else begin
+
+                    currEnumName := GetEnumValueName(enumWarranty);
+                    if currEnumName <> '' then begin
+                        Message('Enum hase value, calculating new date . (this just for test)'); //tesztüzi (*＾▽＾)／
+                        CalculateNewDate();
+                        CalcPrice();
+                    end;
+                end;
             end;
         }
 
@@ -105,8 +115,12 @@ table 50101 "Webshop Order Line"
 
             trigger OnValidate()
             begin
-                CalculateNewDate();
-                CalcPrice();
+
+                if "Target Shipping Date" <> 0D then begin
+                    Message('Target date hase value, calculating new date . (this just for test)'); //tesztüzi (*＾▽＾)／
+                    CalculateNewDate();
+                    CalcPrice();
+                end;
             end;
         }
         field(13; "Date Result"; Date)
@@ -129,7 +143,31 @@ table 50101 "Webshop Order Line"
 
         Initvalue: Enum enumWarranty;
         webShopOrder: Record "Webshop Order Header table";
+        webShopOrderLine: Record "Webshop Order Line";
+        currEnumName: Text;
 
+    local procedure testEnumHasValue() //"enumWarranty"
+    begin
+
+    end;
+
+    local procedure testTArgetDateHasValue() //"Reference for Date Calculation"
+    begin
+
+    end;
+
+    local procedure GetEnumValueName(pSourceType: Enum "enumWarranty"): Text
+    var
+        Index1: Integer;
+        ValueName1: Text;
+    begin
+        Index1 := pSourceType.Ordinals().IndexOf(pSourceType.AsInteger());
+        if Index1 <> 0 then begin
+            pSourceType.Names().Get(Index1, ValueName1);
+        end;
+        exit(ValueName1);
+
+    end;
     /// <summary> 
     /// Description for CalculateNewDate.
     /// </summary>
@@ -155,12 +193,20 @@ table 50101 "Webshop Order Line"
         */
 
         // ez innentől a d, eset
+
         EnumIndex := "enumWarranty".AsInteger();
         "enumWarranty".Names().Get(EnumIndex, EnumText);
-        if (System.Evaluate(DateFormulaToUse, EnumText)) then begin
-            "Date Result" := CalcDate(DateFormulaToUse, "Reference for Date Calculation");
-        end;
 
+        if "Target Shipping Date" = 0D then begin
+            "Date Result" := 0D;
+            
+            Message('No Target Shipping date added. Please add.')
+        end else begin
+
+            if (System.Evaluate(DateFormulaToUse, EnumText)) then begin
+                "Date Result" := CalcDate(DateFormulaToUse, "Target Shipping Date");
+            end;
+        end;
     end;
 
 
@@ -173,18 +219,12 @@ table 50101 "Webshop Order Line"
         EnumText: Text[5];
         EnumIndex: Integer;
         extendedWarPrice: Decimal;
+
     begin
         CalcFields("Unit Price");
         extendedWarPrice := "Unit Price" * 0.15;
         EnumIndex := "enumWarranty".AsInteger();
-        /* Itt eltörik a report, ha a korábbi rendelésekhez nincs Warraty rendelve,
-           amit utólag nem lehet megtenni, mert a shipping date is hiányzik, meg a warraty hossza is
-           és mivel egymásból számolják, utólag nem lehet megadni.
-           TODO FIX ME :
-            - Mi van ha nincs dátum? Számolja az árat anélkül is! >>> done, pls test
-            - Mi van ha nincs warraty hossz? Számolja az árat anélkül is! >>> done, pls test
-            - Mi van ha nincs warraty ár? Készüljön el a report anélkül is (legyen ott nulla) >>> done, pls test
-        */
+        //*1 issue
         if "enumWarranty".Names().Get(EnumIndex, EnumText) then begin
             "enumWarranty".Names().Get(EnumIndex, EnumText);
 
@@ -208,7 +248,7 @@ table 50101 "Webshop Order Line"
     begin
         CalcPrice();
         if webShopOrder.get("Webshop Order ID") then;
-        validate("Reference for Date Calculation", CalcDate('<1W>', webShopOrder."Order Date"));
+        validate("Target Shipping Date", CalcDate('<1W>', webShopOrder."Order Date"));
     end;
 }
 enum 50131 enumWarranty
@@ -224,3 +264,13 @@ enum 50131 enumWarranty
     }
 
 }
+
+//*1 issue (calcPrice):
+/* Itt eltörik a report, ha a korábbi rendelésekhez nincs Warraty rendelve,
+           amit utólag nem lehet megtenni, mert a shipping date is hiányzik, meg a warraty hossza is
+           és mivel egymásból számolják, utólag nem lehet megadni.
+           TODO FIX ME :
+            - Mi van ha nincs dátum? Számolja az árat anélkül is! >>> done, pls test
+            - Mi van ha nincs warraty hossz? Számolja az árat anélkül is! >>> done, pls test
+            - Mi van ha nincs warraty ár? Készüljön el a report anélkül is (legyen ott nulla) >>> done, pls test
+        */

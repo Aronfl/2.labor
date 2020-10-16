@@ -52,11 +52,11 @@ page 50125 "Webshop Order Line Subpage"
                 {
                     ApplicationArea = All;
                 }
-                field("Reference for Date Calculation"; "Reference for Date Calculation")
+                field("Reference for Date Calculation"; "Target Shipping Date")
                 {
                     ApplicationArea = All;
                 }
-                field("enumWarrantee"; "enumWarranty")
+                field("enumWarranty"; "enumWarranty")
                 {
                     ApplicationArea = All;
                 }

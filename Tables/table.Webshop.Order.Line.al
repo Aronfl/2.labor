@@ -124,39 +124,28 @@ table 50101 "Webshop Order Line"
                 CalcPrice();
             end;
         }
+
         field(13; "Date Result"; Date)
         {
             Caption = 'Expiration';
             Editable = false;
-
         }
     }
-
-
     keys
     {
-        key(PK; "Webshop Order ID", "Line No.")
-        {
-
-        }
+        key(PK; "Webshop Order ID", "Line No.") { }
     }
     var
-
         Initvalue: Enum enumWarranty;
         webShopOrder: Record "Webshop Order Header table";
         webShopOrderLine: Record "Webshop Order Line";
         currEnumName: Text;
 
-    local procedure testEnumHasValue() //"enumWarranty"
-    begin
-
-    end;
-
-    local procedure testTArgetDateHasValue() //"Reference for Date Calculation"
-    begin
-
-    end;
-
+    /// <summary> 
+    /// Get name of the enum for dateFormula calculations
+    /// </summary>
+    /// <param name="pSourceType">Parameter of type Enum "enumWarranty".</param>
+    /// <returns>Return variable "Text".</returns>
     local procedure GetEnumValueName(pSourceType: Enum "enumWarranty"): Text
     var
         Index1: Integer;
@@ -169,8 +158,9 @@ table 50101 "Webshop Order Line"
         exit(ValueName1);
 
     end;
+
     /// <summary> 
-    /// Description for CalculateNewDate.
+    /// Calculates the expiration date of the warranty.
     /// </summary>
     local procedure CalculateNewDate()
     var
@@ -178,29 +168,11 @@ table 50101 "Webshop Order Line"
         EnumText: Text[10];
         EnumIndex: Integer;
     begin
-
-        /*
-        //FIXME
-        Eltörik, ha a dátum vagy az enumwarraty-nál nincs érték (korábbi adat felfrissítése esetén
-        Számolja úgy a dátumot, ha valamelyik a kettő közül üres!
-         - Ha azt enumwarraty hiányzik, akkor legyen automatikus nulla nap (tehát a két dátum megegyezik)
-         - Ha a dátum üres (tehát enumot állítja be először a user, akkor maradjon üres (aka ne csináljon semmit ez a method)
-         4 eset van - 4 elágázás ebben a methodban :
-          a, nincs dátum és nincs enum -> ne csináljon semmit a method
-          b, van dátum, de nincs enum -> a számolandó dátum egyezzen meg az eredeti dátummal
-          c, nincs dátum, de van enum -> ne csináljon semmit a method
-          d, van dátum és van enum -> az amit eddig csinált
-
-        */
-
-        // ez innentől a d, eset
-
         EnumIndex := "enumWarranty".AsInteger();
         "enumWarranty".Names().Get(EnumIndex, EnumText);
 
         if "Target Shipping Date" = 0D then begin
             "Date Result" := 0D;
-
             Message('No Target Shipping date added. (message only for test)') //tesztüzi (*＾▽＾)／
         end else begin
 
@@ -209,7 +181,6 @@ table 50101 "Webshop Order Line"
             end;
         end;
     end;
-
 
     /// <summary> 
     /// Calculates the price of a given product. 
@@ -225,7 +196,6 @@ table 50101 "Webshop Order Line"
         CalcFields("Unit Price");
         extendedWarPrice := "Unit Price" * 0.15;
         EnumIndex := "enumWarranty".AsInteger();
-        //*1 issue
         if "enumWarranty".Names().Get(EnumIndex, EnumText) then begin
             "enumWarranty".Names().Get(EnumIndex, EnumText);
 
@@ -254,7 +224,6 @@ table 50101 "Webshop Order Line"
 }
 enum 50131 enumWarranty
 {
-
     value(1; "<1Y>")
     {
         Caption = '1 Year';
@@ -263,10 +232,9 @@ enum 50131 enumWarranty
     {
         Caption = '5 Year (extended)';
     }
-
 }
 
-//*1 issue (calcPrice):
+// *1 issue [calcPrice()]:
 /* Itt eltörik a report, ha a korábbi rendelésekhez nincs Warraty rendelve,
            amit utólag nem lehet megtenni, mert a shipping date is hiányzik, meg a warraty hossza is
            és mivel egymásból számolják, utólag nem lehet megadni.
@@ -275,3 +243,19 @@ enum 50131 enumWarranty
             - Mi van ha nincs warraty hossz? Számolja az árat anélkül is! >>> done, pls test
             - Mi van ha nincs warraty ár? Készüljön el a report anélkül is (legyen ott nulla) >>> done, pls test
         */
+
+// *2 issue [CalculateNewDate()]
+/*FIXME
+Eltörik, ha a dátum vagy az enumwarraty-nál nincs érték (korábbi adat felfrissítése esetén
+Számolja úgy a dátumot, ha valamelyik a kettő közül üres!
+ - Ha azt enumwarraty hiányzik, akkor legyen automatikus nulla nap (tehát a két dátum megegyezik)
+ - Ha a dátum üres (tehát enumot állítja be először a user, akkor maradjon üres (aka ne csináljon semmit ez a method)
+ 4 eset van - 4 elágázás ebben a methodban :
+  a, nincs dátum és nincs enum -> ne csináljon semmit a method
+  b, van dátum, de nincs enum -> a számolandó dátum egyezzen meg az eredeti dátummal
+  c, nincs dátum, de van enum -> ne csináljon semmit a method
+  d, van dátum és van enum -> az amit eddig csinált
+
+*/
+
+// ez innentől a d, eset

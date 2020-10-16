@@ -139,6 +139,22 @@ table 50101 "Webshop Order Line"
         EnumText: Text[10];
         EnumIndex: Integer;
     begin
+
+        /*
+        //FIXME
+        Eltörik, ha a dátum vagy az enumwarraty-nál nincs érték (korábbi adat felfrissítése esetén
+        Számolja úgy a dátumot, ha valamelyik a kettő közül üres!
+         - Ha azt enumwarraty hiányzik, akkor legyen automatikus nulla nap (tehát a két dátum megegyezik)
+         - Ha a dátum üres (tehát enumot állítja be először a user, akkor maradjon üres (aka ne csináljon semmit ez a method)
+         4 eset van - 4 elágázás ebben a methodban :
+          a, nincs dátum és nincs enum -> ne csináljon semmit a method
+          b, van dátum, de nincs enum -> a számolandó dátum egyezzen meg az eredeti dátummal
+          c, nincs dátum, de van enum -> ne csináljon semmit a method
+          d, van dátum és van enum -> az amit eddig csinált
+
+        */
+
+        // ez innentől a d, eset
         EnumIndex := "enumWarranty".AsInteger();
         "enumWarranty".Names().Get(EnumIndex, EnumText);
         if (System.Evaluate(DateFormulaToUse, EnumText)) then begin

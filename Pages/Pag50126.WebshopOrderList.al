@@ -97,6 +97,15 @@ page 50126 "Webshop Order List"
 
     begin
         //Message('Button was pressed pls help me die :(((');
+
+        /*
+            (*＾▽＾)／ <I can help you> ( ͡° ͜ʖ ͡°) 
+                       [power loading...]
+
+            (ノ・∀・)ノ SUDO DIE!
+        ""-...                 .....-----""""
+                   ヽ(^。^)丿
+        */
         CurrPage.SetSelectionFilter(Rec);
 
         If (Rec.FindSet()) then

@@ -28,7 +28,7 @@ table 50100 "Webshop Order Header table"
         {
             Caption = 'Customer ID from BC';
             FieldClass = FlowField;
-            CalcFormula = lookup (Customer."No." where(CustomercardWebshopUserId = field(WebshopUserId)));
+            CalcFormula = lookup(Customer."No." where(CustomercardWebshopUserId = field(WebshopUserId)));
         }
         field(4; "BC Order ID"; Code[20])
         {
@@ -48,13 +48,13 @@ table 50100 "Webshop Order Header table"
         {
             Caption = 'User Name';
             FieldClass = FlowField;
-            CalcFormula = lookup (Customer.Name where(CustomercardWebshopUserId = field(WebshopUserId)));
+            CalcFormula = lookup(Customer.Name where(CustomercardWebshopUserId = field(WebshopUserId)));
         }
 
         field(8; Price; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum ("Webshop Order Line".Price where("Webshop Order ID" = field("Webshop Order ID")));
+            CalcFormula = sum("Webshop Order Line".Price where("Webshop Order ID" = field("Webshop Order ID")));
         }
 
     }
@@ -67,7 +67,7 @@ table 50100 "Webshop Order Header table"
         }
     }
     var
-    errorMessageNegativeNumber : Label 'Webshop ID cannot be negative number', Comment='Foo', MaxLength=99, Locked=true;
+        errorMessageNegativeNumber: Label 'Webshop ID cannot be negative number', Comment = 'Foo', MaxLength = 99, Locked = true;
 }
 
 enum 50110 OrderStatusEnum

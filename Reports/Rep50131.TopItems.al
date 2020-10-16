@@ -38,17 +38,7 @@ report 50131 "Top Webshop Items"
 
             trigger OnAfterGetRecord()
             begin
-                // Message('Item: ' + format(PleaseWork.ValueSold) + ', ' + PleaseWork.Description);
 
-                /* TODO
-
-                1.) sorba rendezni a TempExcelRecordban ValueSold alapján csökkenő sorrendbe - done
-
-                2.) megtartjuk az első 10 db-ot, többit eldobjuk - done
-
-                3.) összérték - done
-
-                */
             end;
         }
     }
@@ -222,7 +212,7 @@ report 50131 "Top Webshop Items"
 
 
 /// <summary> 
-/// Table ExcelItem (ID 50130), only for temporary use within Top Items reports
+/// Table ExcelItem (ID 50130), only for temporary use within Top Items reports.
 /// </summary>
 table 50130 ExcelItem
 {

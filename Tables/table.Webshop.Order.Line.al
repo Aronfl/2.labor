@@ -147,8 +147,10 @@ table 50101 "Webshop Order Line"
 
     end;
 
+
     /// <summary> 
-    /// Description for CalcPrice.
+    /// Calculates the price of a given product. 
+    /// If there is a warranty, the price will calculate it in a separate value.
     /// </summary>
     procedure CalcPrice()
     var
@@ -163,11 +165,9 @@ table 50101 "Webshop Order Line"
            amit utólag nem lehet megtenni, mert a shipping date is hiányzik, meg a warraty hossza is
            és mivel egymásból számolják, utólag nem lehet megadni.
            TODO FIX ME :
-            - Mi van ha nincs dátum? Számolja az árat anélkül is!
-            - Mi van ha nincs warraty hossz? Számolja az árat anélkül is!
-            - Mi van ha nincs warraty ár? Készüljön el a report anélkül is (legyen ott nulla)
-            
-            megjegyzés: Elvileg problem solved. Gergő
+            - Mi van ha nincs dátum? Számolja az árat anélkül is! >>> done, pls test
+            - Mi van ha nincs warraty hossz? Számolja az árat anélkül is! >>> done, pls test
+            - Mi van ha nincs warraty ár? Készüljön el a report anélkül is (legyen ott nulla) >>> done, pls test
         */
         if "enumWarranty".Names().Get(EnumIndex, EnumText) then begin
             "enumWarranty".Names().Get(EnumIndex, EnumText);
@@ -191,14 +191,13 @@ table 50101 "Webshop Order Line"
     trigger OnInsert()
     begin
         CalcPrice();
-        //CalcFormula = lookup("Webshop Order Header table"."Order Date" where("Webshop Order ID" = field("Webshop Order ID")));
         if webShopOrder.get("Webshop Order ID") then;
         validate("Reference for Date Calculation", CalcDate('<1W>', webShopOrder."Order Date"));
     end;
 }
 enum 50131 enumWarranty
 {
-    
+
     value(1; "<1Y>")
     {
         Caption = '1 Year';
